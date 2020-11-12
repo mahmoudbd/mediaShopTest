@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import dummyProducts from '../dummyProducts';
 import { Link } from 'react-router-dom';
-import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
+import {
+	Row,
+	Col,
+	Image,
+	ListGroup,
+	Card,
+	Button,
+	Form
+} from 'react-bootstrap';
 import Rating from '../components/Rating';
 
 function ProductPage({ match }) {
 	const product = dummyProducts.find((p) => p.id === match.params.id);
+
+	const [ qty, setQty ] = useState(1);
 	return (
 		<React.Fragment>
 			<Link className="btn btn-primary my-3 " to="/">
@@ -52,6 +62,28 @@ function ProductPage({ match }) {
 									</Col>
 								</Row>
 							</ListGroup.Item>
+
+							{product.countInStock > 0 && (
+								<ListGroup.Item>
+									<Row>
+										<Col> Qty:</Col>
+										<Col>
+											<Form.Control
+												as="select"
+												value={qty}
+												onChange={(e) => setQty(e.target.value)}
+											>
+												{[ ...Array(product.countInStock).keys() ].map((x) => (
+													<option key={x + 1} value={x + 1}>
+														{x + 1}
+													</option>
+												))}
+											</Form.Control>
+										</Col>
+									</Row>
+								</ListGroup.Item>
+							)}
+
 							<ListGroup.Item>
 								<Button
 									className="btn-block"

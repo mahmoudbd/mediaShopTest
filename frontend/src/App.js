@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
+import CartPage from './pages/CartPage';
 import { Container } from 'react-bootstrap';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
 						<h1>Welcome To MediaShop</h1>
 						<Route path="/" component={HomePage} exact />
 						<Route path="/product/:id" component={ProductPage} />
+						<Route path="/cart/:id?" component={CartPage} />
 					</Container>
 				</main>
 				<Footer />
