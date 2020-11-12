@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, Container, Form, FormControl } from 'react-bootstrap';
 import logo from '../logo.jpg';
 
@@ -15,9 +16,12 @@ function Header() {
 					style={{ borderBottom: '3px solid #DD611B' }}
 				>
 					<Container>
-						<Navbar.Brand href="/">
-							<img src={logo} alt="logo" style={{ width: '35%' }} />
-						</Navbar.Brand>
+						<LinkContainer to="/">
+							<Navbar.Brand>
+								<img src={logo} alt="logo" style={{ width: '35%' }} />
+							</Navbar.Brand>
+						</LinkContainer>
+
 						<Navbar.Toggle aria-controls="basic-navbar-nav" />
 						<Navbar.Collapse id="basic-navbar-nav">
 							<Form inline className="m-auto">
@@ -29,15 +33,21 @@ function Header() {
 								<i className="fas fa-search" />
 							</Form>
 							<Nav className="ml-auto">
-								<Nav.Link href="/">
-									<i className="fas fa-home" />Home
-								</Nav.Link>
-								<Nav.Link href="/cart">
-									<i className="fas fa-shopping-cart" />Cart
-								</Nav.Link>
-								<Nav.Link href="/login">
-									<i className="fas fa-user" />Sign In
-								</Nav.Link>
+								<LinkContainer to="/">
+									<Nav.Link>
+										<i className="fas fa-home" />Home
+									</Nav.Link>
+								</LinkContainer>
+								<LinkContainer to="/cart">
+									<Nav.Link>
+										<i className="fas fa-shopping-cart" />Cart
+									</Nav.Link>
+								</LinkContainer>
+								<LinkContainer to="/login">
+									<Nav.Link>
+										<i className="fas fa-user" />Sign In
+									</Nav.Link>
+								</LinkContainer>
 							</Nav>
 						</Navbar.Collapse>
 					</Container>
