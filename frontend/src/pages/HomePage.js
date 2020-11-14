@@ -7,6 +7,7 @@ import Product from '../components/Product';
 function HomePage() {
 	return (
 		<React.Fragment>
+			<h1>Welcome To MediaShop</h1>
 			<h2>Products</h2>
 			<Row>
 				{dummyProducts.map((product) => (

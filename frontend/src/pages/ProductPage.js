@@ -13,10 +13,14 @@ import {
 } from 'react-bootstrap';
 import Rating from '../components/Rating';
 
-function ProductPage({ match }) {
+function ProductPage({ match, history }) {
 	const product = dummyProducts.find((p) => p.id === match.params.id);
 
 	const [ qty, setQty ] = useState(1);
+
+	const addToCart = () => {
+		history.push(`/cart/${match.params.id}?qty=${qty}`);
+	};
 	return (
 		<React.Fragment>
 			<Link className="btn btn-primary my-3 " to="/">
@@ -86,6 +90,7 @@ function ProductPage({ match }) {
 
 							<ListGroup.Item>
 								<Button
+									onClick={addToCart}
 									className="btn-block"
 									type="button"
 									disabled={product.countInStock === 0}
