@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import dummyProducts from '../dummyProducts';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import {
 	Row,
@@ -14,10 +14,23 @@ import {
 import Rating from '../components/Rating';
 
 function ProductPage({ match, history }) {
-	const product = dummyProducts.find((p) => p.id === match.params.id);
-
 	const [ qty, setQty ] = useState(1);
+	const [ product, setProduct ] = useState({});
 
+	useEffect(
+		() => {
+			const getProduct = async () => {
+				try {
+					const res = await axios.get(`/api/products/${match.params.id}`);
+					setProduct(res.data);
+				} catch (error) {
+					console.log(error);
+				}
+			};
+			getProduct();
+		},
+		[ match ]
+	);
 	const addToCart = () => {
 		history.push(`/cart/${match.params.id}?qty=${qty}`);
 	};
