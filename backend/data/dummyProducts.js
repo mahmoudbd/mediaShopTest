@@ -1,6 +1,5 @@
 const dummyProducts = [
 	{
-		id: '1',
 		name: 'Skylight Frame: 10 inch WiFi Digital Picture',
 		image: '/images/skylight.jpg',
 		description:
@@ -13,7 +12,6 @@ const dummyProducts = [
 		numReviews: 18
 	},
 	{
-		id: '2',
 		name: 'Bose QuietComfort 35 Wireless Headphones',
 		image: '/images/headphones.jpg',
 		description:
@@ -27,7 +25,6 @@ const dummyProducts = [
 	},
 
 	{
-		id: '3',
 		name: 'New Apple iMac with Retina 5K ',
 		image: '/images/mac.jpg',
 		description:
@@ -40,7 +37,6 @@ const dummyProducts = [
 		numReviews: 12
 	},
 	{
-		id: '4',
 		name: 'Apple MacBook Pro 256GB Wi-Fi Laptop ',
 		image: '/images/macbook.jpg',
 		description:
@@ -53,7 +49,6 @@ const dummyProducts = [
 		numReviews: 8
 	},
 	{
-		id: '5',
 		name: 'MSI GL65 Leopard 10SFK-062 15.6" FHD ',
 		image: '/images/msi.jpg',
 		description:
@@ -66,7 +61,6 @@ const dummyProducts = [
 		numReviews: 8
 	},
 	{
-		id: '6',
 		name: 'Canon EOS Mirrorless Lens Camera ',
 		image: '/images/canon.jpg',
 		description:
@@ -79,7 +73,6 @@ const dummyProducts = [
 		numReviews: 22
 	},
 	{
-		id: '7',
 		name: 'Airpods Wireless Bluetooth Headphones',
 		image: '/images/airpods.jpg',
 		description:
@@ -92,7 +85,6 @@ const dummyProducts = [
 		numReviews: 12
 	},
 	{
-		id: '8',
 		name: 'iPhone 11 Pro 256GB Memory White',
 		image: '/images/phone.jpg',
 		description:
@@ -105,7 +97,6 @@ const dummyProducts = [
 		numReviews: 8
 	},
 	{
-		id: '9',
 		name: 'Cannon EOS 80D DSLR Camera',
 		image: '/images/camera.jpg',
 		description:
@@ -118,7 +109,6 @@ const dummyProducts = [
 		numReviews: 31
 	},
 	{
-		id: '10',
 		name: 'Sony Playstation 4 Pro White Version',
 		image: '/images/playstation.jpg',
 		description:
@@ -131,7 +121,6 @@ const dummyProducts = [
 		numReviews: 12
 	},
 	{
-		id: '11',
 		name: 'Logitech G-Series Gaming Mouse',
 		image: '/images/mouse.jpg',
 		description:
@@ -144,7 +133,6 @@ const dummyProducts = [
 		numReviews: 10
 	},
 	{
-		id: '12',
 		name: 'Amazon Echo Dot 3rd Generation',
 		image: '/images/alexa.jpg',
 		description:
@@ -157,7 +145,6 @@ const dummyProducts = [
 		numReviews: 12
 	},
 	{
-		id: '13',
 		name: 'Skylight Frame: 10 inch WiFi Digital Picture',
 		image: '/images/skylight.jpg',
 		description:
@@ -170,7 +157,6 @@ const dummyProducts = [
 		numReviews: 18
 	},
 	{
-		id: '14',
 		name: 'Bose QuietComfort 35 Wireless Headphones',
 		image: '/images/headphones.jpg',
 		description:
@@ -184,7 +170,6 @@ const dummyProducts = [
 	},
 
 	{
-		id: '15',
 		name: 'New Apple iMac with Retina 5K ',
 		image: '/images/mac.jpg',
 		description:
@@ -197,7 +182,6 @@ const dummyProducts = [
 		numReviews: 12
 	},
 	{
-		id: '16',
 		name: 'Apple MacBook Pro 256GB Wi-Fi Laptop ',
 		image: '/images/macbook.jpg',
 		description:
@@ -210,7 +194,6 @@ const dummyProducts = [
 		numReviews: 8
 	},
 	{
-		id: '17',
 		name: 'MSI GL65 Leopard 10SFK-062 15.6" FHD ',
 		image: '/images/msi.jpg',
 		description:
@@ -223,7 +206,6 @@ const dummyProducts = [
 		numReviews: 8
 	},
 	{
-		id: '18',
 		name: 'Canon EOS Mirrorless Lens Camera ',
 		image: '/images/canon.jpg',
 		description:
