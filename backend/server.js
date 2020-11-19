@@ -14,4 +14,4 @@ app.use('/api/products', productsRoute);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, console.log(`server running on ${PORT}`.yellow.inverse));
+app.listen(PORT, console.log(`server running on ${PORT}`.white.inverse));

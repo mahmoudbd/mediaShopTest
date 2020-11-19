@@ -1,18 +1,29 @@
 const express = require('express');
-const dummyProducts = require('../data/dummyProducts');
+// const dummyProducts = require('../data/dummyProducts');
+const asyncHandler = require('express-async-handler');
 const router = express.Router();
+const Product = require('../models/productModel');
 
-router.get('/', (req, res) => {
-	res.json(dummyProducts);
-});
+// Fetch all Products
+router.get(
+	'/',
+	asyncHandler(async (req, res) => {
+		const products = await Product.find({});
+		res.json(products);
+	})
+);
 
-router.get('/:id', (req, res) => {
-	const product = dummyProducts.find((p) => p.id === req.params.id);
-	if (product) {
-		res.json(product);
-	} else {
-		res.json({ message: 'Product Not Found...' });
-	}
-});
+//Fetch a single product
+router.get(
+	'/:id',
+	asyncHandler(async (req, res) => {
+		const product = await Product.findById(req.params.id);
+		if (product) {
+			res.json(product);
+		} else {
+			res.json({ message: 'Product Not Found...' });
+		}
+	})
+);
 
 module.exports = router;
