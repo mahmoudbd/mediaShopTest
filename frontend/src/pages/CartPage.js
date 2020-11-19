@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
 	Row,
 	Col,
@@ -13,37 +13,45 @@ import { Link } from 'react-router-dom';
 import dummyProducts from '../dummyProducts';
 
 function CartPage({ match, location, history }) {
-	const cartItems = dummyProducts.find((item) => item.id === match.params.id);
+	const cartItem = dummyProducts.find((item) => item.id === match.params.id);
 
-	const qty = location.search ? Number(location.search.split('=')[1]) : 1;
-	const arr = [
-		...Array(cartItems).map((item) => {
-			return {
-				productId: item.id,
-				name: item.name,
-				image: item.image,
-				price: item.price,
-				countInStock: item.countInStock,
-				qty
-			};
-		})
-	];
+	const q = location.search ? Number(location.search.split('=')[1]) : 1;
 
-	const [ cartItem, setCartItem ] = useState(arr);
+	const [ cartItems, setCartItems ] = useState([]);
+	const [ qty, setQty ] = useState(Number(q));
+
+	useEffect(
+		() => {
+			setCartItems([
+				{
+					productId: cartItem.id,
+					name: cartItem.name,
+					image: cartItem.image,
+					price: cartItem.price,
+					countInStock: cartItem.countInStock
+				}
+			]);
+		},
+		[ match ]
+	);
 
 	const removeFromCartHandler = (id) => {
-		const removeItem = cartItem.filter((x) => x.productId !== id);
-		setCartItem(removeItem);
+		const removeItem = cartItems.filter((x) => x.productId !== id);
+		setCartItems(removeItem);
 	};
 	const checkoutHandler = () => {
 		history.push('/login?redirect=shipping');
+	};
+
+	const changeHandler = (e) => {
+		setQty(Number(e.target.value));
 	};
 
 	return (
 		<Row>
 			<Col md={8}>
 				<h1>Shopping Cart</h1>
-				{cartItem.length === 0 ? (
+				{cartItems.length === 0 ? (
 					<span
 						style={{
 							width: '300px',
@@ -56,7 +64,7 @@ function CartPage({ match, location, history }) {
 					</span>
 				) : (
 					<ListGroup variant="flush">
-						{cartItem.map((item) => (
+						{cartItems.map((item) => (
 							<ListGroup.Item key={item.productId}>
 								<Row>
 									<Col md={2}>
@@ -69,8 +77,8 @@ function CartPage({ match, location, history }) {
 									<Col md={2}>
 										<Form.Control
 											as="select"
-											value={item.qty}
-											onChange={(e) => setCartItem(Number(e.target.value))}
+											value={qty}
+											onChange={changeHandler}
 										>
 											{[ ...Array(item.countInStock).keys() ].map((x) => (
 												<option key={x + 1} value={x + 1}>
@@ -99,18 +107,18 @@ function CartPage({ match, location, history }) {
 					<ListGroup variant="flush">
 						<ListGroup.Item>
 							<h2>
-								Subtotal ({cartItem.reduce((acc, item) => acc + item.qty, 0)})
-								items
+								Subtotal ({cartItems.reduce((acc, item) => acc + qty, 0)}) items
 							</h2>
-							${cartItem
-								.reduce((acc, item) => acc + item.qty * item.price, 0)
+							$
+							{cartItems
+								.reduce((acc, item) => acc + qty * item.price, 0)
 								.toFixed(2)}
 						</ListGroup.Item>
 						<ListGroup.Item>
 							<Button
 								type="button"
 								className="btn-block"
-								disabled={cartItem.length === 0}
+								disabled={cartItems.length === 0}
 								onClick={checkoutHandler}
 							>
 								Proceed To Checkout
