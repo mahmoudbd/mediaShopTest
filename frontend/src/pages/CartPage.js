@@ -9,12 +9,10 @@ import {
 	Card
 } from 'react-bootstrap';
 
+import axios from 'axios';
 import { Link } from 'react-router-dom';
-import dummyProducts from '../dummyProducts';
 
 function CartPage({ match, location, history }) {
-	const cartItem = dummyProducts.find((item) => item.id === match.params.id);
-
 	const q = location.search ? Number(location.search.split('=')[1]) : 1;
 
 	const [ cartItems, setCartItems ] = useState([]);
@@ -22,15 +20,23 @@ function CartPage({ match, location, history }) {
 
 	useEffect(
 		() => {
-			setCartItems([
-				{
-					productId: cartItem.id,
-					name: cartItem.name,
-					image: cartItem.image,
-					price: cartItem.price,
-					countInStock: cartItem.countInStock
+			const getCartItems = async () => {
+				try {
+					const { data } = await axios.get(`/api/products/${match.params.id}`);
+					setCartItems([
+						{
+							productId: data._id,
+							name: data.name,
+							image: data.image,
+							price: data.price,
+							countInStock: data.countInStock
+						}
+					]);
+				} catch (error) {
+					console.log(error);
 				}
-			]);
+			};
+			getCartItems();
 		},
 		[ match ]
 	);
