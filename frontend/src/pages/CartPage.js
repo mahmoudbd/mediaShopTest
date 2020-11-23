@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {
 	Row,
 	Col,
@@ -8,49 +8,34 @@ import {
 	Button,
 	Card
 } from 'react-bootstrap';
-
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-function CartPage({ match, location, history }) {
-	const q = location.search ? Number(location.search.split('=')[1]) : 1;
+import { useSelector, useDispatch } from 'react-redux';
+import { addToCart, removeFromCart } from '../actions/cartActions';
+import Message from '../components/Message';
 
-	const [ cartItems, setCartItems ] = useState([]);
-	const [ qty, setQty ] = useState(Number(q));
+function CartPage({ match, location, history }) {
+	const productId = match.params.id;
+	const qty = location.search ? Number(location.search.split('=')[1]) : 1;
+
+	const dispatch = useDispatch();
+	const cart = useSelector((state) => state.cart);
+	const { cartItems } = cart;
 
 	useEffect(
 		() => {
-			const getCartItems = async () => {
-				try {
-					const { data } = await axios.get(`/api/products/${match.params.id}`);
-					setCartItems([
-						{
-							productId: data._id,
-							name: data.name,
-							image: data.image,
-							price: data.price,
-							countInStock: data.countInStock
-						}
-					]);
-				} catch (error) {
-					console.log(error);
-				}
-			};
-			getCartItems();
+			if (productId) {
+				dispatch(addToCart(productId, qty));
+			}
 		},
-		[ match ]
+		[ productId, dispatch, qty ]
 	);
 
 	const removeFromCartHandler = (id) => {
-		const removeItem = cartItems.filter((x) => x.productId !== id);
-		setCartItems(removeItem);
+		dispatch(removeFromCart(id));
 	};
 	const checkoutHandler = () => {
 		history.push('/login?redirect=shipping');
-	};
-
-	const changeHandler = (e) => {
-		setQty(Number(e.target.value));
 	};
 
 	return (
@@ -58,16 +43,9 @@ function CartPage({ match, location, history }) {
 			<Col md={8}>
 				<h1>Shopping Cart</h1>
 				{cartItems.length === 0 ? (
-					<span
-						style={{
-							width: '300px',
-							backgroundColor: 'lightpink',
-							fontSize: '20px',
-							display: 'block'
-						}}
-					>
+					<Message variant="primary">
 						Your Cart is empty... <Link to="/">Go Back</Link>
-					</span>
+					</Message>
 				) : (
 					<ListGroup variant="flush">
 						{cartItems.map((item) => (
@@ -83,8 +61,11 @@ function CartPage({ match, location, history }) {
 									<Col md={2}>
 										<Form.Control
 											as="select"
-											value={qty}
-											onChange={changeHandler}
+											value={item.qty}
+											onChange={(e) =>
+												dispatch(
+													addToCart(item.productId, Number(e.target.value))
+												)}
 										>
 											{[ ...Array(item.countInStock).keys() ].map((x) => (
 												<option key={x + 1} value={x + 1}>
@@ -113,11 +94,12 @@ function CartPage({ match, location, history }) {
 					<ListGroup variant="flush">
 						<ListGroup.Item>
 							<h2>
-								Subtotal ({cartItems.reduce((acc, item) => acc + qty, 0)}) items
+								Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
+								items
 							</h2>
-							$
+							Total Price: $
 							{cartItems
-								.reduce((acc, item) => acc + qty * item.price, 0)
+								.reduce((acc, item) => acc + item.qty * item.price, 0)
 								.toFixed(2)}
 						</ListGroup.Item>
 						<ListGroup.Item>

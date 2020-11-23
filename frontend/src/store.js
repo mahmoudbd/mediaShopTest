@@ -5,13 +5,19 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import {
 	productsReducer,
 	productDetailsReducer
-} from './reducers/productsReducer';
+} from './reducers/productsReducers';
+import { cartReducer } from './reducers/cartReducers';
 
 const reducer = combineReducers({
 	productsList: productsReducer,
-	productDetails: productDetailsReducer
+	productDetails: productDetailsReducer,
+	cart: cartReducer
 });
-const initialState = {};
+
+const cartItemsFromStorge = localStorage.getItem('cartItems')
+	? JSON.parse(localStorage.getItem('cartItems'))
+	: [];
+const initialState = { cart: { cartItems: cartItemsFromStorge } };
 const middleware = [ thunk ];
 const store = createStore(
 	reducer,
