@@ -1,10 +1,10 @@
 # Media-Shop App 
 
 ### `Install Dependencies (frontend & backend)`
--clone development branch
--npm install
--cd frontend
--npm install
+- clone development branch
+- npm install
+- cd frontend
+- npm install
 
 
 In the project directory, you can run:
