@@ -6,7 +6,13 @@
 - cd frontend
 - npm install
 
-
+### `Env Variables`
+Create a .env file in then root and add the following
+```
+PORT=5000
+MONGO_URI=mongodb+srv://user:mediaShop@cluster0.dxj8e.mongodb.net/media-shop?retryWrites=true&w=majority
+JWT_SECRET = mediaShop123
+```
 In the project directory, you can run:
 
 ### `npm run dev`
