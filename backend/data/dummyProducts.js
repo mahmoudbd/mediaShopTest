@@ -97,6 +97,18 @@ const dummyProducts = [
 		numReviews: 8
 	},
 	{
+		name: 'Apple iMac 22-inch Core i5 ',
+		image: '/images/iMac.jpg',
+		description:
+			'27-inch (diagonal) 5120-by-2880 Retina 5K display 3.1GHz 6-core 10th-generation Intel Core i5 AMD Radeon Pro 5300 graphics Ultrafast SSD storage',
+		brand: 'MAC',
+		category: 'Electronics',
+		price: 1999.99,
+		countInStock: 3,
+		rating: 4.5,
+		numReviews: 20
+	},
+	{
 		name: 'Cannon EOS 80D DSLR Camera',
 		image: '/images/camera.jpg',
 		description:
@@ -109,7 +121,7 @@ const dummyProducts = [
 		numReviews: 31
 	},
 	{
-		name: 'Sony Playstation 4 Pro White Version',
+		name: 'Sony Playstation 5 Pro White Version',
 		image: '/images/playstation.jpg',
 		description:
 			'The ultimate home entertainment center starts with PlayStation. Whether you are into gaming, HD movies, television, music',
@@ -121,11 +133,11 @@ const dummyProducts = [
 		numReviews: 12
 	},
 	{
-		name: 'Logitech G-Series Gaming Mouse',
+		name: 'Apply Gaming Mouse',
 		image: '/images/mouse.jpg',
 		description:
-			'Get a better handle on your games with this Logitech LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience',
-		brand: 'Logitech',
+			'Get a better handle on your games with this Apply LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience',
+		brand: 'Apply',
 		category: 'Electronics',
 		price: 49.99,
 		countInStock: 7,
@@ -216,6 +228,18 @@ const dummyProducts = [
 		countInStock: 7,
 		rating: 4.0,
 		numReviews: 8
+	},
+	{
+		name: 'Apple iMac 22-inch Core i5 ',
+		image: '/images/iMac.jpg',
+		description:
+			'27-inch (diagonal) 5120-by-2880 Retina 5K display 3.1GHz 6-core 10th-generation Intel Core i5 AMD Radeon Pro 5300 graphics Ultrafast SSD storage',
+		brand: 'MAC',
+		category: 'Electronics',
+		price: 1999.99,
+		countInStock: 3,
+		rating: 4.5,
+		numReviews: 20
 	}
 ];
 
