@@ -8,6 +8,8 @@ import ProductPage from './pages/ProductPage';
 import CartPage from './pages/CartPage';
 import { Container } from 'react-bootstrap';
 import LoginUserPage from './pages/LoginUserPage';
+import RegisterPage from './pages/RegisterPage';
+import ProfilPage from './pages/ProfilePage';
 
 function App() {
 	return (
@@ -20,6 +22,8 @@ function App() {
 						<Route path="/product/:id" component={ProductPage} />
 						<Route path="/cart/:id?" component={CartPage} />
 						<Route path="/login" component={LoginUserPage} />
+						<Route path="/register" component={RegisterPage} />
+						<Route path="/profile" component={ProfilPage} />
 					</Container>
 				</main>
 				<Footer />
