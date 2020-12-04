@@ -1,27 +1,27 @@
 const dummyProducts = [
 	{
-		name: 'Skylight Frame: 10 inch WiFi Digital Picture',
-		image: '/images/skylight.jpg',
+		name: 'Acer Predator Helios 300 Gaming Laptop ',
+		image: '/images/acer.jpg',
 		description:
-			'Skylight Frame: 10 inch WiFi Digital Picture Frame, Email Photos from Anywhere, Touch Screen Display 10 INCH DISPLAY: Gorgeous 10 inch color touch-screen display with 1280x800 resolution',
-		brand: 'SKY',
+			'Acer Predator Helios 300 Gaming Laptop, Intel i7-10750H, NVIDIA GeForce RTX 2060 6GB, 15.6" Full HD 144Hz 3ms IPS Display, 16GB Dual-Channel DDR4, 512GB NVMe SSD, WiFi 6, RGB US QWERTY Keyboard',
+		brand: 'Acer',
 		category: 'Electronics',
-		price: 150.99,
-		countInStock: 0,
-		rating: 3.5,
-		numReviews: 18
+		price: 1449.99,
+		countInStock: 5,
+		rating: 5.0,
+		numReviews: 30
 	},
 	{
-		name: 'Sony WH-1000XM3 Bluetooth Noise Cancelling',
-		image: '/images/sony.jpg',
+		name: 'ASUS ROG Strix G15 G512LW-HN069',
+		image: '/images/asus.jpg',
 		description:
-			'Sony WH-1000XM3 Bluetooth Noise Cancelling Koptelefoon, (30 Uur Batterijduur, 1.5 M USB Kabel, Touch Sensor, Headphones Connect App, Snellaadfunctie, Compatibel met Amazon Alexa), Zwart',
-		brand: 'SONY',
+			'ASUS ROG Strix G15 G512LW-HN069 - 39,6 cm (15,6 inch) Full HD 144Hz (Intel Core i7-10750H, 16GB RAM, 1TB SSD, GeForce RTX2070-8GB, geen besturingssysteem) zwart origineel',
+		brand: 'ASUS',
 		category: 'Electronics',
-		price: 198.99,
-		countInStock: 30,
-		rating: 4.5,
-		numReviews: 12
+		price: 1949.99,
+		countInStock: 3,
+		rating: 4.0,
+		numReviews: 20
 	},
 
 	{
@@ -59,6 +59,19 @@ const dummyProducts = [
 		countInStock: 7,
 		rating: 4.0,
 		numReviews: 8
+	},
+
+	{
+		name: 'Sony WH-1000XM3 Bluetooth Noise Cancelling',
+		image: '/images/sony.jpg',
+		description:
+			'Sony WH-1000XM3 Bluetooth Noise Cancelling Koptelefoon, (30 Uur Batterijduur, 1.5 M USB Kabel, Touch Sensor, Headphones Connect App, Snellaadfunctie, Compatibel met Amazon Alexa), Zwart',
+		brand: 'SONY',
+		category: 'Electronics',
+		price: 198.99,
+		countInStock: 30,
+		rating: 4.5,
+		numReviews: 12
 	},
 	{
 		name: 'Canon EOS Mirrorless Lens Camera ',
@@ -205,18 +218,7 @@ const dummyProducts = [
 		rating: 4.0,
 		numReviews: 8
 	},
-	{
-		name: 'Acer Predator Helios 300 Gaming Laptop ',
-		image: '/images/acer.jpg',
-		description:
-			'Acer Predator Helios 300 Gaming Laptop, Intel i7-10750H, NVIDIA GeForce RTX 2060 6GB, 15.6" Full HD 144Hz 3ms IPS Display, 16GB Dual-Channel DDR4, 512GB NVMe SSD, WiFi 6, RGB US QWERTY Keyboard',
-		brand: 'Acer',
-		category: 'Electronics',
-		price: 1449.99,
-		countInStock: 5,
-		rating: 5.0,
-		numReviews: 30
-	},
+
 	{
 		name: 'Canon EOS Mirrorless Lens Camera RP Full-frame ',
 		image: '/images/canon.jpg',
@@ -229,17 +231,18 @@ const dummyProducts = [
 		rating: 4.0,
 		numReviews: 8
 	},
+
 	{
-		name: 'ASUS ROG Strix G15 G512LW-HN069',
-		image: '/images/asus.jpg',
+		name: 'Skylight Frame: 10 inch WiFi Digital Picture',
+		image: '/images/skylight.jpg',
 		description:
-			'ASUS ROG Strix G15 G512LW-HN069 - 39,6 cm (15,6 inch) Full HD 144Hz (Intel Core i7-10750H, 16GB RAM, 1TB SSD, GeForce RTX2070-8GB, geen besturingssysteem) zwart origineel',
-		brand: 'ASUS',
+			'Skylight Frame: 10 inch WiFi Digital Picture Frame, Email Photos from Anywhere, Touch Screen Display 10 INCH DISPLAY: Gorgeous 10 inch color touch-screen display with 1280x800 resolution',
+		brand: 'SKY',
 		category: 'Electronics',
-		price: 1949.99,
-		countInStock: 3,
-		rating: 4.0,
-		numReviews: 20
+		price: 150.99,
+		countInStock: 0,
+		rating: 3.5,
+		numReviews: 18
 	}
 ];
 
