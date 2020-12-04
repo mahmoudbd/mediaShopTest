@@ -80,7 +80,7 @@ function Rating({ value, text, color }) {
 	);
 }
 Rating.defaultProps = {
-	color: '#FF651D'
+	color: '#f8e825'
 };
 
 Rating.propTypes = {

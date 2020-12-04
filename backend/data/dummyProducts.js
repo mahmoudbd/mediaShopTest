@@ -1,27 +1,27 @@
 const dummyProducts = [
 	{
-		name: 'Acer Predator Helios 300 Gaming Laptop ',
-		image: '/images/acer.jpg',
+		name: 'Skylight Frame: 10 inch WiFi Digital Picture',
+		image: '/images/skylight.jpg',
 		description:
-			'Acer Predator Helios 300 Gaming Laptop, Intel i7-10750H, NVIDIA GeForce RTX 2060 6GB, 15.6" Full HD 144Hz 3ms IPS Display, 16GB Dual-Channel DDR4, 512GB NVMe SSD, WiFi 6, RGB US QWERTY Keyboard',
-		brand: 'Acer',
+			'Skylight Frame: 10 inch WiFi Digital Picture Frame, Email Photos from Anywhere, Touch Screen Display 10 INCH DISPLAY: Gorgeous 10 inch color touch-screen display with 1280x800 resolution',
+		brand: 'SKY',
 		category: 'Electronics',
-		price: 1449.99,
-		countInStock: 5,
-		rating: 5.0,
-		numReviews: 30
+		price: 150.99,
+		countInStock: 0,
+		rating: 3.5,
+		numReviews: 18
 	},
 	{
-		name: 'ASUS ROG Strix G15 G512LW-HN069',
-		image: '/images/asus.jpg',
+		name: 'Bose QuietComfort 35 Wireless Headphones',
+		image: '/images/headphones.jpg',
 		description:
-			'ASUS ROG Strix G15 G512LW-HN069 - 39,6 cm (15,6 inch) Full HD 144Hz (Intel Core i7-10750H, 16GB RAM, 1TB SSD, GeForce RTX2070-8GB, geen besturingssysteem) zwart origineel',
-		brand: 'ASUS',
+			'Three levels of world-class noise cancellation for better listening experience in any environment Hassle-free Bluetooth pairing, personalized settings, access to future updates, and more through the Bose connect app.Usb cable: 12 inch',
+		brand: 'BOSE',
 		category: 'Electronics',
-		price: 1949.99,
-		countInStock: 3,
-		rating: 4.0,
-		numReviews: 20
+		price: 199.99,
+		countInStock: 10,
+		rating: 4.5,
+		numReviews: 12
 	},
 
 	{
@@ -60,19 +60,6 @@ const dummyProducts = [
 		rating: 4.0,
 		numReviews: 8
 	},
-
-	{
-		name: 'Sony WH-1000XM3 Bluetooth Noise Cancelling',
-		image: '/images/sony.jpg',
-		description:
-			'Sony WH-1000XM3 Bluetooth Noise Cancelling Koptelefoon, (30 Uur Batterijduur, 1.5 M USB Kabel, Touch Sensor, Headphones Connect App, Snellaadfunctie, Compatibel met Amazon Alexa), Zwart',
-		brand: 'SONY',
-		category: 'Electronics',
-		price: 198.99,
-		countInStock: 30,
-		rating: 4.5,
-		numReviews: 12
-	},
 	{
 		name: 'Canon EOS Mirrorless Lens Camera ',
 		image: '/images/canon.jpg',
@@ -110,31 +97,19 @@ const dummyProducts = [
 		numReviews: 8
 	},
 	{
-		name: 'Apple iMac 22-inch Core i5 3.1GHz',
-		image: '/images/iMac.jpg',
+		name: 'Cannon EOS 80D DSLR Camera',
+		image: '/images/camera.jpg',
 		description:
-			'27-inch (diagonal) 5120-by-2880 Retina 5K display 3.1GHz 6-core 10th-generation Intel Core i5 AMD Radeon Pro 5300 graphics Ultrafast SSD storage',
-		brand: 'MAC',
-		category: 'Electronics',
-		price: 1999.99,
-		countInStock: 3,
-		rating: 4.5,
-		numReviews: 20
-	},
-	{
-		name: 'Canon EOS M50 Systeemcamera Kit, 24,1 MP',
-		image: '/images/camera-1.jpg',
-		description:
-			'Canon EOS M50 Systeemcamera Kit, 24,1 MP, Roterend en Draaibaar 7,5 cm Touchscreen LC-display, Digic 8, 4K Video, OLED EVF, WLAN, Bluetooth, met Lens EF-M 15-45 mm IS STM, Zwart',
+			'Characterized by versatile imaging specs, the Canon EOS 80D further clarifies itself using a pair of robust focusing systems and an intuitive design',
 		brand: 'Cannon',
 		category: 'Electronics',
-		price: 540.99,
+		price: 929.99,
 		countInStock: 5,
-		rating: 4.5,
+		rating: 3.5,
 		numReviews: 31
 	},
 	{
-		name: 'Sony Playstation 5 Pro White Version',
+		name: 'Sony Playstation 4 Pro White Version',
 		image: '/images/playstation.jpg',
 		description:
 			'The ultimate home entertainment center starts with PlayStation. Whether you are into gaming, HD movies, television, music',
@@ -146,11 +121,11 @@ const dummyProducts = [
 		numReviews: 12
 	},
 	{
-		name: 'Apply Gaming Mouse smooth playing experience',
+		name: 'Logitech G-Series Gaming Mouse',
 		image: '/images/mouse.jpg',
 		description:
-			'Get a better handle on your games with this Apply LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience',
-		brand: 'Apply',
+			'Get a better handle on your games with this Logitech LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience',
+		brand: 'Logitech',
 		category: 'Electronics',
 		price: 49.99,
 		countInStock: 7,
@@ -170,16 +145,16 @@ const dummyProducts = [
 		numReviews: 12
 	},
 	{
-		name: 'Nieuw Apple iPad Pro 12,9‑inch',
-		image: '/images/ipad.jpg',
+		name: 'Skylight Frame: 10 inch WiFi Digital Picture',
+		image: '/images/skylight.jpg',
 		description:
-			'Nieuw Apple iPad Pro (12,9‑inch, Wi-Fi, 256 GB) - Zilver (4e generatie)12,9‑inch Liquid Retina-display (rand tot rand) met ProMotion, True Tone en brede kleurweergave (P3) ',
-		brand: 'APPLE',
+			'Skylight Frame: 10 inch WiFi Digital Picture Frame, Email Photos from Anywhere, Touch Screen Display 10 INCH DISPLAY: Gorgeous 10 inch color touch-screen display with 1280x800 resolution',
+		brand: 'SKY',
 		category: 'Electronics',
-		price: 999.99,
+		price: 150.99,
 		countInStock: 0,
-		rating: 4.5,
-		numReviews: 40
+		rating: 3.5,
+		numReviews: 18
 	},
 	{
 		name: 'Bose QuietComfort 35 Wireless Headphones',
@@ -195,7 +170,7 @@ const dummyProducts = [
 	},
 
 	{
-		name: 'New Apple iMac with Retina 5K 27-inch ',
+		name: 'New Apple iMac with Retina 5K ',
 		image: '/images/mac.jpg',
 		description:
 			'27-inch (diagonal) 5120-by-2880 Retina 5K display 3.1GHz 6-core 10th-generation Intel Core i5 AMD Radeon Pro 5300 graphics Ultrafast SSD storage',
@@ -218,9 +193,20 @@ const dummyProducts = [
 		rating: 4.0,
 		numReviews: 8
 	},
-
 	{
-		name: 'Canon EOS Mirrorless Lens Camera RP Full-frame ',
+		name: 'MSI GL65 Leopard 10SFK-062 15.6" FHD ',
+		image: '/images/msi.jpg',
+		description:
+			'MSI GL65 Leopard 10SFK-062 15.6" FHD 144Hz 3ms Thin Bezel Gaming Laptop Intel Core i7-10750H RTX2070 16GB 512GB NVMe SSD Win 10',
+		brand: 'MSI',
+		category: 'Electronics',
+		price: 900.99,
+		countInStock: 7,
+		rating: 4.0,
+		numReviews: 8
+	},
+	{
+		name: 'Canon EOS Mirrorless Lens Camera ',
 		image: '/images/canon.jpg',
 		description:
 			'Canon EOS RP Full-frame Mirrorless Interchangeable Lens Camera + RF24-105mm lens F4-7.1 IS STM Lens Kit Compact and lightweight for Traveling and Vlogging, Black (3380C132)',
@@ -230,19 +216,6 @@ const dummyProducts = [
 		countInStock: 7,
 		rating: 4.0,
 		numReviews: 8
-	},
-
-	{
-		name: 'Skylight Frame: 10 inch WiFi Digital Picture',
-		image: '/images/skylight.jpg',
-		description:
-			'Skylight Frame: 10 inch WiFi Digital Picture Frame, Email Photos from Anywhere, Touch Screen Display 10 INCH DISPLAY: Gorgeous 10 inch color touch-screen display with 1280x800 resolution',
-		brand: 'SKY',
-		category: 'Electronics',
-		price: 150.99,
-		countInStock: 0,
-		rating: 3.5,
-		numReviews: 18
 	}
 ];
 
