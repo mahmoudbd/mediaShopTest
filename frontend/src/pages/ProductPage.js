@@ -89,7 +89,7 @@ function ProductPage({ match, history }) {
                                         <Col>Status:</Col>
                                         <Col>
                                             {product.countInStock > 0
-                                                ? 'In Stock'
+                                                ? `${product.countInStock} items In Stock`
                                                 : 'Out Of Stock'}
                                         </Col>
                                     </Row>
