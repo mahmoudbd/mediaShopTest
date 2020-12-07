@@ -1,7 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const productsRoute = require('./routes/productsRouts');
-const usersRoute = require('./routes/userRoutes');
+const productsRoutes = require('./routes/productsRouts');
+const usersRoutes = require('./routes/userRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 
 const colors = require('colors');
 const app = express();
@@ -17,8 +18,9 @@ app.use(express.json());
 app.get('/', (req, res) => {
 	res.send('Media-Shop API...');
 });
-app.use('/api/products', productsRoute);
-app.use('/api/users', usersRoute);
+app.use('/api/products', productsRoutes);
+app.use('/api/users', usersRoutes);
+app.use('/api/order', orderRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

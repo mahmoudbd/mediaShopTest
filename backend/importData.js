@@ -6,6 +6,7 @@ const dummyUsers = require('./data/dummyUsers');
 const dummyProducts = require('./data/dummyProducts');
 const User = require('./models/userModel');
 const Product = require('./models/productModel');
+const Order = require('./models/orderModel');
 
 dotenv.config();
 connectDB();
@@ -14,6 +15,7 @@ const importData = async () => {
 	try {
 		await Product.deleteMany();
 		await User.deleteMany();
+		await Order.deleteMany();
 
 		const createdUesre = await User.insertMany(dummyUsers);
 		const adminUser = await createdUesre[0]._id;
