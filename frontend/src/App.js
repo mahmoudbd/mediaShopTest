@@ -43,7 +43,8 @@ function App() {
         setCartItems(newList);
         localStorage.removeItem('products');
         localStorage.setItem('products', cartItems);
-        setCount(count - 1);
+        let numberOfProducts = newList.reduce((a, c) => a + c.quantity, 0);
+        setCount(numberOfProducts);
     };
 
     const addUserInfo = (user) => {
