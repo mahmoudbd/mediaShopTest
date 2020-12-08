@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 });
 app.use('/api/products', productsRoutes);
 app.use('/api/users', usersRoutes);
-app.use('/api/order', orderRoutes);
+app.use('/api/orders', orderRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
