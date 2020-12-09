@@ -32,11 +32,11 @@ function PlaceOrderPage({ history }) {
 			if (success) {
 				history.push(`/order/${order._id}`);
 			}
-			// eslint-disable-next-line
 		},
+		// eslint-disable-next-line
 		[ history, success ]
 	);
-
+	console.log(order, 'order');
 	const placeOrderHandler = () => {
 		dispatch(
 			createOrder({
