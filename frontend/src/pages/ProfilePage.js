@@ -8,6 +8,7 @@ import Loader from '../components/Loader';
 import { getUserDetails, updateUserProfile } from '../actions/userActions';
 import { USER_UPADTE_PROFILE_RESET } from '../constants/userConstants';
 import { listUserOrders } from '../actions/orderActions';
+import Moment from 'moment';
 
 function ProfilePage({ history }) {
 	const [ name, setName ] = useState('');
@@ -116,7 +117,7 @@ function ProfilePage({ history }) {
 				) : errorOrders ? (
 					<Message variant="danger">{errorOrders}</Message>
 				) : (
-					<Table striped bordered hover responsive calssName="table-sm">
+					<Table striped bordered hover responsive className="table-sm">
 						<thead>
 							<tr>
 								<th>ID</th>
@@ -131,11 +132,15 @@ function ProfilePage({ history }) {
 							{orders.map((order) => (
 								<tr key={order._id}>
 									<td>{order._id}</td>
-									<td>{order.createdAt.substring(0, 10)}</td>
+									<td>
+										{Moment(order.createdAt.substring(0, 10)).format(
+											'DD-MM-YYYY'
+										)}
+									</td>
 									<td>{order.totalPrice}</td>
 									<td>
 										{order.isPaid ? (
-											order.paidAt.substring(0, 10)
+											Moment(order.paidAt.substring(0, 10)).format('DD-MM-YYYY')
 										) : (
 											<i className="fas fa-times" style={{ color: 'red' }} />
 										)}

@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { PayPalButton } from 'react-paypal-button-v2';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
+import { Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { Link } from 'react-router-dom';
 import { getOrderDetails, payOrder } from '../actions/orderActions';
 import { ORDER_PAY_RESET } from '../constants/orderConstants';
-
+import Moment from 'moment';
 function OrderPage({ match }) {
 	const orderId = match.params.id;
 	const [ sdkReady, setSdkReady ] = useState(false);
@@ -109,7 +109,9 @@ function OrderPage({ match }) {
 										{order.paymentMethod}
 									</p>
 									{order.isPaid ? (
-										<Message variant="success">Paid on {order.paidAt}</Message>
+										<Message variant="success">
+											Paid on {Moment(order.paidAt).format('DD-MM-YYYY')}
+										</Message>
 									) : (
 										<Message variant="danger">Not Paid</Message>
 									)}
