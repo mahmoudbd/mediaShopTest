@@ -10,6 +10,7 @@ import { Container } from 'react-bootstrap';
 import LoginUserPage from './pages/LoginUserPage';
 import RegisterPage from './pages/RegisterPage';
 import ProfilPage from './pages/ProfilePage';
+import UserListPage from './pages/UserListPage';
 
 function App() {
 	return (
@@ -24,6 +25,7 @@ function App() {
 						<Route path="/login" component={LoginUserPage} />
 						<Route path="/register" component={RegisterPage} />
 						<Route path="/profile" component={ProfilPage} />
+						<Route path="/admin/userlist" component={UserListPage} />
 					</Container>
 				</main>
 				<Footer />
