@@ -22,7 +22,7 @@ const importData = async () => {
 		const sampleProducts = dummyProducts.map((p) => {
 			return {
 				...p,
-				adminUser: adminUser
+				user: adminUser
 			};
 		});
 		await Product.insertMany(sampleProducts);
