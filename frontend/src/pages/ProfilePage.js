@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Button, Row, Col, Form } from 'react-bootstrap';
+import { Button, Row, Col, Form, Table } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { getUserDetails, updateUserProfile } from '../actions/userActions';
 import { USER_UPADTE_PROFILE_RESET } from '../constants/userConstants';
+import { listUserOrders } from '../actions/orderActions';
+import Moment from 'moment';
 
 function ProfilePage({ history }) {
 	const [ name, setName ] = useState('');
@@ -24,6 +27,9 @@ function ProfilePage({ history }) {
 	const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
 	const { success } = userUpdateProfile;
 
+	const ordersListUser = useSelector((state) => state.ordersListUser);
+	const { loading: loadingOrders, orders, error: errorOrders } = ordersListUser;
+
 	useEffect(
 		() => {
 			if (!userInfo) {
@@ -32,6 +38,7 @@ function ProfilePage({ history }) {
 				if (!user.name || success) {
 					dispatch({ type: USER_UPADTE_PROFILE_RESET });
 					dispatch(getUserDetails('profile'));
+					dispatch(listUserOrders());
 				} else {
 					setName(user.name);
 					setEmail(user.email);
@@ -105,6 +112,58 @@ function ProfilePage({ history }) {
 			</Col>
 			<Col md={9}>
 				<h2>MY ORDER</h2>
+				{loadingOrders ? (
+					<Loader />
+				) : errorOrders ? (
+					<Message variant="danger">{errorOrders}</Message>
+				) : (
+					<Table striped bordered hover responsive className="table-sm">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>DATE</th>
+								<th>TOTAL</th>
+								<th>PAID</th>
+								<th>DELIVERD</th>
+								<th />
+							</tr>
+						</thead>
+						<tbody>
+							{orders.map((order) => (
+								<tr key={order._id}>
+									<td>{order._id}</td>
+									<td>
+										{Moment(order.createdAt.substring(0, 10)).format(
+											'DD-MM-YYYY'
+										)}
+									</td>
+									<td>{order.totalPrice}</td>
+									<td>
+										{order.isPaid ? (
+											Moment(order.paidAt.substring(0, 10)).format('DD-MM-YYYY')
+										) : (
+											<i className="fas fa-times" style={{ color: 'red' }} />
+										)}
+									</td>
+									<td>
+										{order.isDelivered ? (
+											order.deliveredAt.substring(0, 10)
+										) : (
+											<i className="fas fa-times" style={{ color: 'red' }} />
+										)}
+									</td>
+									<td>
+										<LinkContainer to={`/order/${order._id}`}>
+											<Button className="btn-sm" variant="light">
+												Details
+											</Button>
+										</LinkContainer>
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</Table>
+				)}
 			</Col>
 		</Row>
 	);

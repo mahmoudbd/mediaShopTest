@@ -6,12 +6,14 @@ const dummyUsers = require('./data/dummyUsers');
 const dummyProducts = require('./data/dummyProducts');
 const User = require('./models/userModel');
 const Product = require('./models/productModel');
+const Order = require('./models/orderModel');
 
 dotenv.config();
 connectDB();
 
 const importData = async () => {
 	try {
+		await Order.deleteMany();
 		await Product.deleteMany();
 		await User.deleteMany();
 
@@ -20,7 +22,7 @@ const importData = async () => {
 		const sampleProducts = dummyProducts.map((p) => {
 			return {
 				...p,
-				adminUser: adminUser
+				user: adminUser
 			};
 		});
 		await Product.insertMany(sampleProducts);

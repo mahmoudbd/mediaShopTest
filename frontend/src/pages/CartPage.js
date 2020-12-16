@@ -37,6 +37,9 @@ function CartPage({ match, location, history }) {
 	const checkoutHandler = () => {
 		history.push('/login?redirect=shipping');
 	};
+	const checkoutHandlerAsGest = () => {
+		history.push('/shipping');
+	};
 
 	return (
 		<Row>
@@ -110,6 +113,14 @@ function CartPage({ match, location, history }) {
 								onClick={checkoutHandler}
 							>
 								Proceed To Checkout
+							</Button>
+							<Button
+								type="button"
+								className="btn-block"
+								disabled={cartItems.length === 0}
+								onClick={checkoutHandlerAsGest}
+							>
+								Continue As Gest
 							</Button>
 						</ListGroup.Item>
 					</ListGroup>

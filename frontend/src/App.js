@@ -10,7 +10,14 @@ import { Container } from 'react-bootstrap';
 import LoginUserPage from './pages/LoginUserPage';
 import RegisterPage from './pages/RegisterPage';
 import ProfilPage from './pages/ProfilePage';
+<<<<<<< HEAD
 import UserListPage from './pages/UserListPage';
+=======
+import ShippingPage from './pages/ShippingPage';
+import PaymentPage from './pages/PaymentPage';
+import PlaceOrderPage from './pages/PlaceOrderPage';
+import OrderPage from './pages/OrderPage';
+>>>>>>> cbdfab8e323fb4d4f650b48130f34ba08b0a91cb
 
 function App() {
 	return (
@@ -25,7 +32,14 @@ function App() {
 						<Route path="/login" component={LoginUserPage} />
 						<Route path="/register" component={RegisterPage} />
 						<Route path="/profile" component={ProfilPage} />
+<<<<<<< HEAD
 						<Route path="/admin/userlist" component={UserListPage} />
+=======
+						<Route path="/shipping" component={ShippingPage} />
+						<Route path="/payment" component={PaymentPage} />
+						<Route path="/placeorder" component={PlaceOrderPage} />
+						<Route path="/order/:id" component={OrderPage} />
+>>>>>>> cbdfab8e323fb4d4f650b48130f34ba08b0a91cb
 					</Container>
 				</main>
 				<Footer />
