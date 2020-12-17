@@ -4,24 +4,36 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Button, Table } from 'react-bootstrap';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import { listUsers } from '../actions/userActions';
+import { listUsers, deleteUser } from '../actions/userActions';
 
-function UserListPage() {
+function UserListPage({ history }) {
 	const dispatch = useDispatch();
 
 	const userList = useSelector((state) => state.userList);
 	const { loading, error, users } = userList;
 
+	const userLogin = useSelector((state) => state.userLogin);
+	const { userInfo } = userLogin;
+
+	const userDelete = useSelector((state) => state.userDelete);
+	const { success: successDelete } = userDelete;
+
 	useEffect(
 		() => {
-			dispatch(listUsers());
+			if (userInfo && userInfo.isAdmin) {
+				dispatch(listUsers());
+			} else {
+				history.push('/login');
+			}
 		},
-		[ dispatch ]
+		[ dispatch, history, successDelete ]
 	);
 	const deleteHandler = (id) => {
-		console.log('kjgh');
+		if (window.confirm('Are You sure')) {
+			dispatch(deleteUser(id));
+		}
 	};
-	console.log(users, 'users');
+
 	return (
 		<React.Fragment>
 			<h1>Users</h1>
