@@ -2,9 +2,9 @@
 
 ### `Install Dependencies (frontend & backend)`
 1. clone **main** branch
-- npm install
-- cd frontend
-- npm install
+ - npm install
+2. cd frontend
+ - npm install
 
 ### `Env Variables`
 Create a .env file in then root and add the following
