@@ -4,9 +4,14 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Button, Table, Row, Col } from 'react-bootstrap';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import { productsActions, deleteProduct } from '../actions/productsActions';
+import {
+	productsActions,
+	deleteProduct,
+	createProduct
+} from '../actions/productsActions';
+import { PRODUCTS_CREATE_RESET } from '../constants/productConstants';
 
-function ProductListPage({ history, match }) {
+function ProductListPage({ history }) {
 	const dispatch = useDispatch();
 
 	const productsList = useSelector((state) => state.productsList);
@@ -14,7 +19,7 @@ function ProductListPage({ history, match }) {
 
 	const productDelete = useSelector((state) => state.productDelete);
 	const {
-		loading: LoadingDelete,
+		loading: loadingDelete,
 		error: errorDelete,
 		success: successDelete
 	} = productDelete;
@@ -22,15 +27,35 @@ function ProductListPage({ history, match }) {
 	const userLogin = useSelector((state) => state.userLogin);
 	const { userInfo } = userLogin;
 
+	const productCreate = useSelector((state) => state.productCreate);
+	const {
+		loading: loadingCreate,
+		error: errorCreate,
+		product: createdProduct,
+		success: successCreate
+	} = productCreate;
+
 	useEffect(
 		() => {
-			if (userInfo && userInfo.isAdmin) {
-				dispatch(productsActions());
-			} else {
+			dispatch({ type: PRODUCTS_CREATE_RESET });
+
+			if (!userInfo.isAdmin) {
 				history.push('/login');
 			}
+			if (successCreate) {
+				history.push(`/admin/product/${createdProduct._id}/edit`);
+			} else {
+				dispatch(productsActions());
+			}
 		},
-		[ dispatch, history, userInfo, successDelete ]
+		[
+			dispatch,
+			history,
+			userInfo,
+			successDelete,
+			successCreate,
+			createdProduct
+		]
 	);
 	const deleteHandler = (id) => {
 		if (window.confirm('Are You sure')) {
@@ -39,7 +64,7 @@ function ProductListPage({ history, match }) {
 	};
 
 	const createProductHandler = () => {
-		console.log('products');
+		dispatch(createProduct());
 	};
 
 	return (
@@ -54,8 +79,11 @@ function ProductListPage({ history, match }) {
 					</Button>
 				</Col>
 			</Row>
-			{LoadingDelete && <Loader />}
+			{loadingDelete && <Loader />}
 			{errorDelete && <Message variant="danger">{errorDelete}</Message>}
+
+			{loadingCreate && <Loader />}
+			{errorCreate && <Message variant="danger">{errorCreate}</Message>}
 			{loading ? (
 				<Loader />
 			) : error ? (
