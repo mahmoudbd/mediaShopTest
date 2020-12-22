@@ -4,7 +4,17 @@ import {
 	PRODUCTS_FAIL,
 	PRODUCTS_DETAILS_REQUEST,
 	PRODUCTS_DETAILS_SUCCESS,
-	PRODUCTS_DETAILS_FAIL
+	PRODUCTS_DETAILS_FAIL,
+	PRODUCTS_DELETE_REQUEST,
+	PRODUCTS_DELETE_SUCCESS,
+	PRODUCTS_DELETE_FAIL,
+	PRODUCTS_CREATE_REQUEST,
+	PRODUCTS_CREATE_SUCCESS,
+	PRODUCTS_CREATE_FAIL,
+	PRODUCTS_UPDATE_REQUEST,
+	PRODUCTS_UPDATE_SUCCESS,
+	PRODUCTS_UPDATE_FAIL
+	// PRODUCTS_UPDATE_RESET
 } from '../constants/productConstants';
 
 import axios from 'axios';
@@ -14,7 +24,7 @@ export const productsActions = () => async (dispatch) => {
 		dispatch({
 			type: PRODUCTS_REQUEST
 		});
-		const res = await axios.get('api/products');
+		const res = await axios.get('/api/products');
 		dispatch({
 			type: PRODUCTS_SUCCESS,
 			payload: res.data
@@ -22,7 +32,10 @@ export const productsActions = () => async (dispatch) => {
 	} catch (error) {
 		dispatch({
 			type: PRODUCTS_FAIL,
-			payload: error.message
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message
 		});
 	}
 };
@@ -38,7 +51,99 @@ export const productAction = (id) => async (dispatch) => {
 	} catch (error) {
 		dispatch({
 			type: PRODUCTS_DETAILS_FAIL,
-			payload: error.message
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message
+		});
+	}
+};
+
+export const deleteProduct = (id) => async (dispatch, getState) => {
+	try {
+		dispatch({ type: PRODUCTS_DELETE_REQUEST });
+		const { userLogin: { userInfo } } = getState();
+		const config = {
+			headers: {
+				Authorization: `Bearer ${userInfo.token}`
+			}
+		};
+		await axios.delete(`/api/products/${id}`, config);
+
+		dispatch({ type: PRODUCTS_DELETE_SUCCESS });
+	} catch (error) {
+		dispatch({
+			type: PRODUCTS_DELETE_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message
+		});
+	}
+};
+
+export const createProduct = () => async (dispatch, getState) => {
+	try {
+		dispatch({
+			type: PRODUCTS_CREATE_REQUEST
+		});
+
+		const { userLogin: { userInfo } } = getState();
+
+		const config = {
+			headers: {
+				Authorization: `Bearer ${userInfo.token}`
+			}
+		};
+
+		const { data } = await axios.post(`/api/products`, {}, config);
+
+		dispatch({
+			type: PRODUCTS_CREATE_SUCCESS,
+			payload: data
+		});
+	} catch (error) {
+		dispatch({
+			type: PRODUCTS_CREATE_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message
+		});
+	}
+};
+
+export const updateProduct = (product) => async (dispatch, getState) => {
+	try {
+		dispatch({
+			type: PRODUCTS_UPDATE_REQUEST
+		});
+
+		const { userLogin: { userInfo } } = getState();
+
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${userInfo.token}`
+			}
+		};
+		const { data } = await axios.put(
+			`/api/products/${product._id}`,
+			product,
+			config
+		);
+
+		dispatch({
+			type: PRODUCTS_UPDATE_SUCCESS,
+			payload: data
+		});
+	} catch (error) {
+		dispatch({
+			type: PRODUCTS_UPDATE_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message
 		});
 	}
 };

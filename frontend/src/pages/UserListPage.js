@@ -74,7 +74,7 @@ function UserListPage({ history }) {
 										</Button>
 									</LinkContainer>
 									<Button
-										varinat="danger"
+										variant="danger"
 										className="btn-sm"
 										onClick={() => deleteHandler(user._id)}
 									>
