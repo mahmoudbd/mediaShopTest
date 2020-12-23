@@ -5,7 +5,7 @@ import { Button, Table } from 'react-bootstrap';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { listAdminOrders } from '../actions/orderActions';
-
+import Moment from 'moment';
 function OrderListPage({ history }) {
 	const dispatch = useDispatch();
 
@@ -26,7 +26,6 @@ function OrderListPage({ history }) {
 		[ dispatch, history, userInfo ]
 	);
 
-	console.log(orders, 'orders admin');
 	return (
 		<React.Fragment>
 			<h1>Orders</h1>
@@ -52,18 +51,24 @@ function OrderListPage({ history }) {
 							<tr key={order._id}>
 								<td>{order._id}</td>
 								<td>{order.user && order.user.name}</td>
-								<td>{order.createdAt.substring(0, 10)}</td>
+								<td>
+									{Moment(order.createdAt.substring(0, 10)).format(
+										'DD-MM-YYYY'
+									)}
+								</td>
 								<td>${order.totalPrice}</td>
 								<td>
 									{order.isPaid ? (
-										order.paidAt.substring(0, 10)
+										Moment(order.paidAt.substring(0, 10)).format('DD-MM-YYYY')
 									) : (
 										<i className="fas fa-times" style={{ color: 'red' }} />
 									)}
 								</td>
 								<td>
 									{order.isDelivered ? (
-										order.deliveredAt.substring(0.1)
+										Moment(order.deliveredAt.substring(0, 10)).format(
+											'DD-MM-YYYY'
+										)
 									) : (
 										<i className="fas fa-times" style={{ color: 'red' }} />
 									)}
