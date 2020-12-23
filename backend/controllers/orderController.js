@@ -71,9 +71,15 @@ const getUserOrders = asyncHandler(async (req, res) => {
 	res.json(orders);
 });
 
+// GET all orders  admin
+const getOrders = asyncHandler(async (req, res) => {
+	const orders = await Order.find({}).populate('user', 'id name');
+	res.json(orders);
+});
 module.exports = {
 	addOrderItems,
 	getOrderById,
 	updateOrderToPaid,
-	getUserOrders
+	getUserOrders,
+	getOrders
 };

@@ -97,7 +97,7 @@ function ProductEditPage({ match, history }) {
 
 	return (
 		<React.Fragment>
-			<Link to="/admin/productlist" className="btn btn-light my-3">
+			<Link to="/admin/productlist" className="btn btn-primary my-3">
 				Go Back
 			</Link>
 			<FormContainer>
@@ -139,6 +139,8 @@ function ProductEditPage({ match, history }) {
 								onChange={(e) => setImage(e.target.value)}
 							/>
 							<Form.File
+								style={{ cursor: 'pointer' }}
+								className="btn btn-light"
 								id="image-file"
 								label="Choose File"
 								custom

@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { getOrderDetails, payOrder } from '../actions/orderActions';
 import { ORDER_PAY_RESET } from '../constants/orderConstants';
 import Moment from 'moment';
+
 function OrderPage({ match }) {
 	const orderId = match.params.id;
 	const [ sdkReady, setSdkReady ] = useState(false);

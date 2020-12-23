@@ -18,6 +18,7 @@ import OrderPage from './pages/OrderPage';
 import UserEditPage from './pages/UserEditPage';
 import ProductListPage from './pages/ProductListPage';
 import ProductEditPage from './pages/ProductEditPage';
+import OrderListPage from './pages/OrderListPage';
 
 function App() {
 	return (
@@ -48,6 +49,7 @@ function App() {
 							exact
 							component={ProductEditPage}
 						/>
+						<Route path="/admin/orderlist" component={OrderListPage} />
 					</Container>
 				</main>
 				<Footer />
