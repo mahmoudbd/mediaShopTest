@@ -6,7 +6,8 @@ const {
 	getProductById,
 	deleteProduct,
 	createProduct,
-	updateProduct
+	updateProduct,
+	createProductReview
 } = require('../controllers/productController');
 
 // Fetch all Products
@@ -16,6 +17,9 @@ router.route('/').get(getProducts);
 //Fetch a single product
 // router.get('/:id', getProductById);
 router.route('/:id').get(getProductById);
+
+//Create product review
+router.post('/:id/reviews', protect, createProductReview);
 
 //delete product  admin
 router.delete('/:id', protect, admin, deleteProduct);

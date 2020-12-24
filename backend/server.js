@@ -1,18 +1,24 @@
 const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
+// const morgan = require('morgan');
+const colors = require('colors');
+//middleware error handler
+const { notFound, errorHandler } = require('./middleware/errorMiddleware');
+const connectDB = require('./config/db');
+
 const productsRoutes = require('./routes/productsRouts');
 const usersRoutes = require('./routes/userRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const uploadRoutes = require('./routes/uploadRoutes');
 
-const colors = require('colors');
 const app = express();
-const connectDB = require('./config/db');
-//middleware error handler
-const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 dotenv.config();
 connectDB();
+
+// if (process.env.NODE_ENV === 'development') {
+// 	app.use(morgan('dev'));
+// }
 
 //body parser
 app.use(express.json());
