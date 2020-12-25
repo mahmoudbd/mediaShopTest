@@ -21,12 +21,12 @@ import {
 
 import axios from 'axios';
 
-export const productsActions = () => async (dispatch) => {
+export const productsActions = (keyword = '') => async (dispatch) => {
 	try {
 		dispatch({
 			type: PRODUCTS_REQUEST
 		});
-		const res = await axios.get('/api/products');
+		const res = await axios.get(`/api/products?keyword=${keyword}`);
 		dispatch({
 			type: PRODUCTS_SUCCESS,
 			payload: res.data

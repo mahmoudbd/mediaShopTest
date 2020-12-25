@@ -28,6 +28,7 @@ function App() {
 				<main className="py-3">
 					<Container>
 						<Route path="/" component={HomePage} exact />
+						<Route path="/search/:keyword" component={HomePage} />
 						<Route path="/product/:id" component={ProductPage} />
 						<Route path="/cart/:id?" component={CartPage} />
 						<Route path="/login" component={LoginUserPage} />

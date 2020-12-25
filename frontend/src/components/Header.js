@@ -1,21 +1,15 @@
 import React from 'react';
-
-import { LinkContainer } from 'react-router-bootstrap';
-import {
-	Navbar,
-	Nav,
-	Container,
-	Form,
-	FormControl,
-	NavDropdown
-} from 'react-bootstrap';
-import logo from '../logo.jpg';
-
+import { Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
+import logo from '../logo.jpg';
+import SearchBox from './SearchBox';
 import { logout } from '../actions/userActions';
 
-function Header() {
+const Header = () => {
 	const dispatch = useDispatch();
+
 	const userLogin = useSelector((state) => state.userLogin);
 	const { userInfo } = userLogin;
 
@@ -35,20 +29,13 @@ function Header() {
 					<Container>
 						<LinkContainer to="/">
 							<Navbar.Brand>
-								<img src={logo} alt="logo" style={{ width: '35%' }} />
+								<img src={logo} alt="logo" className="logo" />
 							</Navbar.Brand>
 						</LinkContainer>
 
 						<Navbar.Toggle aria-controls="basic-navbar-nav" />
 						<Navbar.Collapse id="basic-navbar-nav">
-							<Form inline className="m-auto">
-								<FormControl
-									type="text"
-									placeholder="Search Products"
-									className=""
-								/>
-								<i className="fas fa-search" />
-							</Form>
+							<SearchBox />
 							<Nav className="ml-auto">
 								<LinkContainer to="/">
 									<Nav.Link>
@@ -101,6 +88,6 @@ function Header() {
 			</React.Fragment>
 		</header>
 	);
-}
+};
 
 export default Header;

@@ -21,3 +21,13 @@ i {
 .uppercase {
 	text-transform: uppercase;
 }
+.logo {
+	width: 35%;
+}
+
+@media screen and (max-width: 640px) {
+	.logo {
+		width: 70%;
+		height: 50px;
+	}
+}
