@@ -4,20 +4,23 @@ import Product from '../components/Product';
 
 import Message from '../components/Message';
 import Loader from '../components/Loader';
+import Paginate from '../components/Paginate';
 import { useDispatch, useSelector } from 'react-redux';
 import { productsActions } from '../actions/productsActions';
 
 function HomePage({ match }) {
 	const dispatch = useDispatch();
 	const productsList = useSelector((state) => state.productsList);
-	const { loading, products, error } = productsList;
+	const { loading, products, error, page, pages } = productsList;
 
 	const keyword = match.params.keyword;
+	const pageNumber = match.params.pageNumber || 1;
+
 	useEffect(
 		() => {
-			dispatch(productsActions(keyword));
+			dispatch(productsActions(keyword, pageNumber));
 		},
-		[ dispatch, keyword ]
+		[ dispatch, keyword, pageNumber ]
 	);
 	return (
 		<React.Fragment>
@@ -30,13 +33,20 @@ function HomePage({ match }) {
 					<h3>{error}</h3>
 				</Message>
 			) : (
-				<Row>
-					{products.map((product) => (
-						<Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-							<Product product={product} />
-						</Col>
-					))}
-				</Row>
+				<React.Fragment>
+					<Row>
+						{products.map((product) => (
+							<Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+								<Product product={product} />
+							</Col>
+						))}
+					</Row>
+					<Paginate
+						pages={pages}
+						page={page}
+						keyword={keyword ? keyword : ''}
+					/>
+				</React.Fragment>
 			)}
 		</React.Fragment>
 	);

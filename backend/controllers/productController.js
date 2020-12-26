@@ -3,6 +3,11 @@ const asyncHandler = require('express-async-handler');
 
 // Fetch all Products
 const getProducts = asyncHandler(async (req, res) => {
+	// how many items per page we want
+	const pageSize = 5;
+	// wahtever the page in the query is ?pageNumber=1 or 2 ...
+	const page = Number(req.query.pageNumber) || 1;
+
 	const keyword = req.query.keyword
 		? {
 				name: {
@@ -11,9 +16,13 @@ const getProducts = asyncHandler(async (req, res) => {
 				}
 			}
 		: {};
+	//Total count of products
+	const count = await Product.countDocuments({ ...keyword });
 
-	const products = await Product.find({ ...keyword });
-	res.json(products);
+	const products = await Product.find({ ...keyword })
+		.limit(pageSize)
+		.skip(pageSize * (page - 1));
+	res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 
 //Fetch a single product

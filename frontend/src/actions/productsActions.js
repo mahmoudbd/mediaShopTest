@@ -21,12 +21,16 @@ import {
 
 import axios from 'axios';
 
-export const productsActions = (keyword = '') => async (dispatch) => {
+export const productsActions = (keyword = '', pageNumber = '') => async (
+	dispatch
+) => {
 	try {
 		dispatch({
 			type: PRODUCTS_REQUEST
 		});
-		const res = await axios.get(`/api/products?keyword=${keyword}`);
+		const res = await axios.get(
+			`/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+		);
 		dispatch({
 			type: PRODUCTS_SUCCESS,
 			payload: res.data
