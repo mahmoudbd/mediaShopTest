@@ -26,7 +26,7 @@ function App() {
 			<Router>
 				<Header />
 				<main className="py-3">
-					<Container>
+					<Container className="container">
 						<Route path="/" component={HomePage} exact />
 						<Route path="/search/:keyword" component={HomePage} exact />
 						<Route path="/page/:pageNumber" component={HomePage} exact />

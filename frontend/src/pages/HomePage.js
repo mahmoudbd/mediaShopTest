@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Product from '../components/Product';
-
+import { Link } from 'react-router-dom';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import Paginate from '../components/Paginate';
 import { useDispatch, useSelector } from 'react-redux';
 import { productsActions } from '../actions/productsActions';
+import ProductCarousel from '../components/ProductCarousel';
 
 function HomePage({ match }) {
 	const dispatch = useDispatch();
@@ -24,7 +25,8 @@ function HomePage({ match }) {
 	);
 	return (
 		<React.Fragment>
-			<h1>Welcome To MediaShop</h1>
+			<h1 className="title">Welcome To MediaShop</h1>
+			{!keyword && <ProductCarousel />}
 			<h2>Products</h2>
 			{loading ? (
 				<Loader />
@@ -32,6 +34,10 @@ function HomePage({ match }) {
 				<Message variant="danger">
 					<h3>{error}</h3>
 				</Message>
+			) : products.length === 0 ? (
+				<h3 style={{ backgroundColor: 'whitesmoke' }}>
+					Product Not Found... <Link to="/">Go Back</Link>
+				</h3>
 			) : (
 				<React.Fragment>
 					<Row>

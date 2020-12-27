@@ -7,12 +7,15 @@ const {
 	deleteProduct,
 	createProduct,
 	updateProduct,
-	createProductReview
+	createProductReview,
+	getTopProducts
 } = require('../controllers/productController');
 
 // Fetch all Products
 // router.get('/', getProducts);
 router.route('/').get(getProducts);
+
+router.get('/top', getTopProducts);
 
 //Fetch a single product
 // router.get('/:id', getProductById);
