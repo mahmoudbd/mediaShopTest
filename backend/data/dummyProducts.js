@@ -74,6 +74,92 @@ const dummyProducts = [
 		numReviews: 12
 	},
 	{
+		name: 'New Apple Watch Series 6 (GPS, 44mm)',
+		image: '/images/watch-apple.jpg',
+		description:
+			'(PRODUCT)RED - Aluminum Case with (PRODUCT)RED﻿ - Sport Band GPS model lets you take calls and reply to texts from your wrist Measure your blood oxygen with an all-new sensor and app',
+		brand: 'APPLE',
+		category: 'Electronics',
+		price: 429,
+		countInStock: 5,
+		rating: 4.5,
+		numReviews: 10
+	},
+	{
+		name:
+			'HP Envy 32 All-in-One Computer, 9th Gen Intel Core i7-9700 Processor',
+		image: '/images/Hp.jpg',
+		description:
+			'4K UHD Monitor, NVIDIA GeForce GTX 1650 Graphics (4 GB), 16 GB RAM, 1 TB SSD, Windows 10 (32-a0010, Nightfall Black)Integrated 4K monitor: 31.5" diagonal wide-color-gamut with HDR-600, 6000:1 contrast ratio, 600 nits peak brightness, anti-reflective coating, DCI-P3',
+		brand: 'HP',
+		category: 'Electronics',
+		price: 1500,
+		countInStock: 5,
+		rating: 4.5,
+		numReviews: 10
+	},
+	{
+		name:
+			'Microsoft Surface Studio 2 (Intel Core i7, 32GB RAM, 1TB) - Newest Version (Renewed)',
+		image: '/images/Microsoft-Surface.jpg',
+		description:
+			'Microsoft Surface Studio 2 (Intel Core i7, 32GB RAM, 1TB) - Newest Version (Renewed) Microsoft Surface Studio 2 (Intel Core i7, 32GB RAM, 1TB) - Newest Version (Renewed) Microsoft Surface Studio 2 (Intel Core i7, 32GB RAM, 1TB) - Newest Version (Renewed)',
+		brand: 'Microsoft',
+		category: 'Electronics',
+		price: 3500,
+		countInStock: 5,
+		rating: 5,
+		numReviews: 1
+	},
+	{
+		name: 'TICWRIS MAX S Andriod Smart Watch',
+		image: '/images/watch-samsung.jpg',
+		description:
+			'TICWRIS MAX S Andriod Smart Watch, GPS Android Smartwatch, 4G LTE with 2.4" Touch Screen, Face Unlock Phone Watch with 2000mAh Battery, IP67 Waterproof Sport Watch,3GB+32GB Andriod Watch for Men',
+		brand: 'TICWRIS',
+		category: 'Electronics',
+		price: 99,
+		countInStock: 5,
+		rating: 4,
+		numReviews: 4
+	},
+	{
+		name: 'MSI Trident X Plus 9SE-062US High-End',
+		image: '/images/msi-desktop.jpg',
+		description:
+			'MSI Trident X Plus 9SE-062US High-End Small Form Factor PC Intel Core i9-9900K RTX 2080 VENTUS 8G OC 16GB 512GB PCIe NVME SSD+2TB HDD, Black Type: small form Factor PC With Mini-ITX MB | Operating System: Win 10 Home	Processor: Intel Core i9-9900k Processor 8 Cores 3.6-5.0 GHz 16M Cache',
+		brand: 'MSI',
+		category: 'Electronics',
+		price: 3900,
+		countInStock: 5,
+		rating: 5,
+		numReviews: 5
+	},
+	{
+		name: 'Redragon M901 Wired Gaming Mouse',
+		image: '/images/new-mouse.jpg',
+		description:
+			'Redragon M901 Wired Gaming Mouse MMO RGB LED Backlit Mice 12400 DPI Perdition with 18 Programmable Buttons Weight Tuning for Windows PC Gaming (Black)',
+		brand: 'Redragon',
+		category: 'Electronics',
+		price: 250,
+		countInStock: 10,
+		rating: 1,
+		numReviews: 4.5
+	},
+	{
+		name: 'Samsung NOTE 20',
+		image: '/images/samsung-note.jpg',
+		description:
+			'Samsung Galaxy Note 20 256GB N980F/DS S-Pen 6.7” Triple Camera GSM LTE Factory Unlocked Smartphone (International Version) (Mystic Bronze)Rear Camera: 12MP Ultra Wide Camera, 12MP Wide-angle Camera + 64MP Telephoto Camera - Front Camera: 10MP Selfie Camera - 3x Hybrid Optic Zoom, OI(Optical Image Stabilization), Tracking AF, VDIS (Video Digital Image Stabilization) - Video: 8K video recording at 24 fps (7680x4320)',
+		brand: 'Samsung',
+		category: 'Electronics',
+		price: 800,
+		countInStock: 10,
+		rating: 1,
+		numReviews: 4.5
+	},
+	{
 		name: 'Canon EOS Mirrorless Lens Camera ',
 		image: '/images/canon.jpg',
 		description:
@@ -157,18 +243,7 @@ const dummyProducts = [
 		rating: 3.5,
 		numReviews: 10
 	},
-	{
-		name: 'Amazon Echo Dot 3rd Generation',
-		image: '/images/alexa.jpg',
-		description:
-			'Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space',
-		brand: 'Amazon',
-		category: 'Electronics',
-		price: 29.99,
-		countInStock: 0,
-		rating: 4,
-		numReviews: 12
-	},
+
 	{
 		name: 'Nieuw Apple iPad Pro 12,9‑inch',
 		image: '/images/ipad.jpg',

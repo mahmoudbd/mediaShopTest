@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 // Fetch all Products
 const getProducts = asyncHandler(async (req, res) => {
 	// how many items per page we want
-	const pageSize = 5;
+	const pageSize = 10;
 	// wahtever the page in the query is ?pageNumber=1 or 2 ...
 	const page = Number(req.query.pageNumber) || 1;
 
