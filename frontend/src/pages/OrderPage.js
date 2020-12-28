@@ -59,7 +59,7 @@ function OrderPage({ match, history }) {
 				};
 				document.body.appendChild(script);
 			};
-			if (!order || successPay || successDeliver) {
+			if (!order || successPay || successDeliver || order._id !== orderId) {
 				dispatch({ type: ORDER_PAY_RESET });
 				dispatch({ type: ORDER_DELIVER_RESET });
 				dispatch(getOrderDetails(orderId));
@@ -70,12 +70,8 @@ function OrderPage({ match, history }) {
 					setSdkReady(true);
 				}
 			}
-
-			if (!order || order._id !== orderId) {
-				dispatch(getOrderDetails(orderId));
-			}
 		},
-		[ dispatch, order, orderId, successPay, successDeliver, history, userInfo ]
+		[ dispatch, orderId, successPay, successDeliver, order, history, userInfo ]
 	);
 	const successPaymentHandler = (paymentResult) => {
 		console.log('payment result', paymentResult);
