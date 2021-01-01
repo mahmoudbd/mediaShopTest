@@ -10,6 +10,9 @@ import { logout } from '../actions/userActions';
 const Header = () => {
 	const dispatch = useDispatch();
 
+	const cart = useSelector((state) => state.cart);
+	const { cartItems } = cart;
+
 	const userLogin = useSelector((state) => state.userLogin);
 	const { userInfo } = userLogin;
 
@@ -45,6 +48,11 @@ const Header = () => {
 								<LinkContainer to="/cart">
 									<Nav.Link>
 										<i className="fas fa-shopping-cart" />Cart
+										{cartItems.length > 0 && (
+											<span>
+												-{cartItems.reduce((acc, item) => acc + item.qty, 0)}
+											</span>
+										)}
 									</Nav.Link>
 								</LinkContainer>
 								{userInfo ? (

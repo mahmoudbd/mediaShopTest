@@ -15,6 +15,7 @@ import {
 	ORDER_PAY_RESET,
 	ORDER_DELIVER_RESET
 } from '../constants/orderConstants';
+import { CART_RESET_ITEM } from '../constants/cartConstants';
 import Moment from 'moment';
 
 function OrderPage({ match, history }) {
@@ -63,6 +64,8 @@ function OrderPage({ match, history }) {
 				dispatch({ type: ORDER_PAY_RESET });
 				dispatch({ type: ORDER_DELIVER_RESET });
 				dispatch(getOrderDetails(orderId));
+			} else if (order.isPaid === true) {
+				dispatch({ type: CART_RESET_ITEM });
 			} else if (!order.isPaid) {
 				if (!window.paypal) {
 					addPayPalScript();
