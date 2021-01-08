@@ -47,10 +47,13 @@ const Header = () => {
 								</LinkContainer>
 								<LinkContainer to="/cart">
 									<Nav.Link>
-										<i className="fas fa-shopping-cart" />Cart
+										<i
+											className="fas fa-shopping-cart"
+											style={{ fontSize: '21px' }}
+										/>
 										{cartItems.length > 0 && (
-											<span>
-												-{cartItems.reduce((acc, item) => acc + item.qty, 0)}
+											<span id="lblCartCount" className="badge badge-warning">
+												{cartItems.reduce((acc, item) => acc + item.qty, 0)}
 											</span>
 										)}
 									</Nav.Link>

@@ -17,7 +17,7 @@ const protect = asyncHandler(async (req, res, next) => {
 		} catch (error) {
 			console.error(error);
 			res.status(401);
-			throw new Error('Your session has timed out please login again');
+			throw new Error('Please login again');
 		}
 	}
 	if (!token) {

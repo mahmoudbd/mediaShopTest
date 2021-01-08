@@ -4,11 +4,11 @@ const asyncHandler = require('express-async-handler');
 // Fetch all Products
 const getProducts = asyncHandler(async (req, res) => {
 	// how many items per page we want
-	const pageSize = 10;
+	const pageSize = 8;
 	// wahtever the page in the query is ?pageNumber=1 or 2 ...
 	const page = Number(req.query.pageNumber) || 1;
 
-	const keyword = req.query.keyword
+	const keywordName = req.query.keyword
 		? {
 				name: {
 					$regex: req.query.keyword,
@@ -16,12 +16,51 @@ const getProducts = asyncHandler(async (req, res) => {
 				}
 			}
 		: {};
+	const keywordDescription = req.query.keyword
+		? {
+				description: {
+					$regex: req.query.keyword,
+					$options: 'i'
+				}
+			}
+		: {};
+	const keywordBarnd = req.query.keyword
+		? {
+				brand: {
+					$regex: req.query.keyword,
+					$options: 'i'
+				}
+			}
+		: {};
+	const keywordCategory = req.query.keyword
+		? {
+				category: {
+					$regex: req.query.keyword,
+					$options: 'i'
+				}
+			}
+		: {};
 	//Total count of products
-	const count = await Product.countDocuments({ ...keyword });
+	const count = await Product.countDocuments({
+		$or: [
+			{ ...keywordName },
+			{ ...keywordDescription },
+			{ ...keywordBarnd },
+			{ ...keywordCategory }
+		]
+	});
 
-	const products = await Product.find({ ...keyword })
+	const products = await Product.find({
+		$or: [
+			{ ...keywordName },
+			{ ...keywordDescription },
+			{ ...keywordBarnd },
+			{ ...keywordCategory }
+		]
+	})
 		.limit(pageSize)
 		.skip(pageSize * (page - 1));
+
 	res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 

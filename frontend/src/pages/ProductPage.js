@@ -8,7 +8,8 @@ import {
 	ListGroup,
 	Card,
 	Button,
-	Form
+	Form,
+	InputGroup
 } from 'react-bootstrap';
 import Rating from '../components/Rating';
 
@@ -122,19 +123,36 @@ function ProductPage({ match, history }) {
 											<Row>
 												<Col> Qty:</Col>
 												<Col>
-													<Form.Control
-														as="select"
-														value={qty}
-														onChange={(e) => setQty(e.target.value)}
-													>
-														{[
+													<InputGroup>
+														<Button
+															size="sm"
+															variant="outline-primary"
+															value={qty}
+															onClick={() => setQty(qty + 1)}
+															disabled={product.countInStock < qty + 1}
+														>
+															<i className="fas fa-plus-circle" />
+														</Button>
+														<p style={{ padding: '0 5px' }}>
+															<strong>{qty}</strong>
+														</p>
+														<Button
+															size="sm"
+															variant="outline-primary"
+															value={qty}
+															onClick={() => setQty(qty - 1)}
+															disabled={qty === 0}
+														>
+															<i className="fas fa-minus-circle" />
+														</Button>
+														{/* {[
 															...Array(product.countInStock).keys()
 														].map((x) => (
 															<option key={x + 1} value={x + 1}>
 																{x + 1}
 															</option>
-														))}
-													</Form.Control>
+														))} */}
+													</InputGroup>
 												</Col>
 											</Row>
 										</ListGroup.Item>
@@ -172,7 +190,7 @@ function ProductPage({ match, history }) {
 								<ListGroup.Item>
 									<h2>Write a Customer Review</h2>
 									{errorProductReview && (
-										<Message variant="danger">{errorProductReview}</Message>
+										<Message variant="warning">{errorProductReview}</Message>
 									)}
 									{loadingProductReview && <Loader />}
 									{userInfo ? (

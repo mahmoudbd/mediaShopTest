@@ -51,6 +51,28 @@ i {
 .carousel a {
 	margin: 0 auto;
 }
+.badge {
+	padding-left: 9px;
+	padding-right: 9px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+	background-color: #c67605;
+}
+#lblCartCount {
+	font-size: 13px;
+	background: #ff651d;
+	color: #fff;
+	padding: 3 5px;
+	vertical-align: top;
+	margin-left: -8px;
+
+	border-radius: 50px;
+}
 
 @media (max-width: 900px) {
 	.carousel-caption h2 {
