@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col, Button, ButtonGroup } from 'react-bootstrap';
+import Meta from '../components/Meta';
 import Product from '../components/Product';
 import { Link } from 'react-router-dom';
 import Message from '../components/Message';
@@ -41,7 +42,14 @@ function HomePage({ match }) {
 	return (
 		<React.Fragment>
 			<h1 className="title">Welcome To MediaShop</h1>
-			{!keyword && <ProductCarousel />}
+			<Meta />
+			{!keyword ? (
+				<ProductCarousel />
+			) : (
+				<Link to="/" className="btn btn-primary">
+					Go Back
+				</Link>
+			)}
 			<h2>Products</h2>
 			{loading ? (
 				<Loader />
