@@ -73,10 +73,29 @@ i {
 
 	border-radius: 50px;
 }
+.product-image {
+	width: 550px;
+}
 
+.slick-prev {
+	left: 3% !important;
+	z-index: 1;
+}
+.slick-next {
+	right: 3% !important;
+
+	z-index: 1;
+}
+.slick-prev:before,
+.slick-next:before {
+	color: #000;
+}
 @media (max-width: 900px) {
 	.carousel-caption h2 {
 		font-size: 2.5vw;
+	}
+	.product-image {
+		width: 350px;
 	}
 }
 

@@ -17,6 +17,7 @@ function ProductEditPage({ match, history }) {
 	const [ name, setName ] = useState('');
 	const [ price, setPrice ] = useState(0);
 	const [ image, setImage ] = useState('');
+	const [ featureImage, setFeatureImage ] = useState('');
 	const [ brand, setBrand ] = useState('');
 	const [ category, setCategory ] = useState('');
 	const [ countInStock, setCountInStock ] = useState(0);
@@ -47,6 +48,7 @@ function ProductEditPage({ match, history }) {
 					setName(product.name);
 					setPrice(product.price);
 					setImage(product.image);
+					setFeatureImage(product.featureImage);
 					setBrand(product.brand);
 					setCategory(product.category);
 					setCountInStock(product.countInStock);
@@ -79,6 +81,28 @@ function ProductEditPage({ match, history }) {
 			setUploading(false);
 		}
 	};
+	const uploadFileHandlerF = async (e) => {
+		const file = e.target.files[0];
+		const formData = new FormData();
+		formData.append('image', file);
+		setUploading(true);
+
+		try {
+			const config = {
+				headers: {
+					'Content-Type': 'multipart/form-data'
+				}
+			};
+
+			const { data } = await axios.post('/api/upload', formData, config);
+
+			setFeatureImage(data);
+			setUploading(false);
+		} catch (error) {
+			console.error(error);
+			setUploading(false);
+		}
+	};
 	const submitHandler = (e) => {
 		e.preventDefault();
 		dispatch(
@@ -87,6 +111,7 @@ function ProductEditPage({ match, history }) {
 				name,
 				price,
 				image,
+				featureImage,
 				brand,
 				category,
 				description,
@@ -145,6 +170,25 @@ function ProductEditPage({ match, history }) {
 								label="Choose File"
 								custom
 								onChange={uploadFileHandler}
+							/>
+							{uploading && <Loader />}
+						</Form.Group>
+
+						<Form.Group controlId="image">
+							<Form.Label>featureImage</Form.Label>
+							<Form.Control
+								type="text"
+								placeholder="Enter image url"
+								value={featureImage}
+								onChange={(e) => setFeatureImage(e.target.value)}
+							/>
+							<Form.File
+								style={{ cursor: 'pointer' }}
+								className="btn btn-light"
+								id="image-file"
+								label="Choose File"
+								custom
+								onChange={uploadFileHandlerF}
 							/>
 							{uploading && <Loader />}
 						</Form.Group>

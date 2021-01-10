@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
+
 import Meta from '../components/Meta';
+
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
+import InnerImageZoom from 'react-inner-image-zoom';
+
+import Slider from 'react-slick';
+
 import { Link } from 'react-router-dom';
 import {
 	Row,
 	Col,
-	Image,
 	ListGroup,
 	Card,
 	Button,
@@ -24,6 +30,15 @@ function ProductPage({ match, history }) {
 	const [ rating, setRating ] = useState(0);
 	const [ comment, setComment ] = useState('');
 
+	const [ settings ] = useState({
+		dots: true,
+		arrows: true,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		className: 'slides'
+	});
 	const dispatch = useDispatch();
 
 	const productDetails = useSelector((state) => state.productDetails);
@@ -54,7 +69,7 @@ function ProductPage({ match, history }) {
 	const addToCart = () => {
 		history.push(`/cart/${match.params.id}?qty=${qty}`);
 	};
-
+	console.log(product, 'prodtcs');
 	const submitHandler = (e) => {
 		e.preventDefault();
 		dispatch(
@@ -78,19 +93,46 @@ function ProductPage({ match, history }) {
 					<Meta title={product.name} />
 					<Row>
 						<Col md={6}>
-							<Image src={product.image} alt={product.name} fluid />
+							{/* <Image src={product.image} alt={product.name} fluid /> */}
+							<React.Fragment>
+								<Slider {...settings}>
+									<div>
+										<InnerImageZoom
+											src={product.image || undefined}
+											zoomSrc={product.image}
+											alt={product.name}
+											zoomScale={2}
+										/>
+									</div>
+									{product.featureImage !== '' && (
+										<div>
+											<InnerImageZoom
+												src={product.featureImage}
+												zoomSrc={product.featureImage}
+												alt={product.name}
+											/>
+										</div>
+									)}
+								</Slider>
+							</React.Fragment>
 						</Col>
+
 						<Col md={3}>
 							<ListGroup variant="flush">
 								<ListGroup.Item>
 									<h2> {product.name}</h2>
 								</ListGroup.Item>
 								<ListGroup.Item>
-									<Rating
-										value={product.rating}
-										text={`${product.numReviews} reviews`}
-									/>
+									{product.rating === 0 ? (
+										<h4>NO Reviews</h4>
+									) : (
+										<Rating
+											value={product.rating}
+											text={`${product.numReviews} reviews`}
+										/>
+									)}
 								</ListGroup.Item>
+
 								<ListGroup.Item>
 									<strong>Price: ${product.price} </strong>
 								</ListGroup.Item>
