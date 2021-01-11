@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-
 import Meta from '../components/Meta';
 
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 import InnerImageZoom from 'react-inner-image-zoom';
-
 import Slider from 'react-slick';
+
+import Rating from '@material-ui/lab/Rating';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
 import { Link } from 'react-router-dom';
 import {
@@ -17,13 +19,16 @@ import {
 	Form,
 	InputGroup
 } from 'react-bootstrap';
-import Rating from '../components/Rating';
+import RatingR from '../components/RatingR';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { productAction, createProductReview } from '../actions/productsActions';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { PRODUCTS_CREATE_REVIEW_RESET } from '../constants/productConstants';
+
+console.log = console.warn = console.error = () => {};
+console.error('Something bad happened.');
 
 function ProductPage({ match, history }) {
 	const [ qty, setQty ] = useState(1);
@@ -69,7 +74,7 @@ function ProductPage({ match, history }) {
 	const addToCart = () => {
 		history.push(`/cart/${match.params.id}?qty=${qty}`);
 	};
-	console.log(product, 'prodtcs');
+
 	const submitHandler = (e) => {
 		e.preventDefault();
 		dispatch(
@@ -98,7 +103,7 @@ function ProductPage({ match, history }) {
 								<Slider {...settings}>
 									<div>
 										<InnerImageZoom
-											src={product.image || undefined}
+											src={product.image}
 											zoomSrc={product.image}
 											alt={product.name}
 											zoomScale={2}
@@ -110,6 +115,7 @@ function ProductPage({ match, history }) {
 												src={product.featureImage}
 												zoomSrc={product.featureImage}
 												alt={product.name}
+												zoomScale={2}
 											/>
 										</div>
 									)}
@@ -126,7 +132,7 @@ function ProductPage({ match, history }) {
 									{product.rating === 0 ? (
 										<h4>NO Reviews</h4>
 									) : (
-										<Rating
+										<RatingR
 											value={product.rating}
 											text={`${product.numReviews} reviews`}
 										/>
@@ -225,7 +231,7 @@ function ProductPage({ match, history }) {
 								{product.reviews.map((review) => (
 									<ListGroup.Item key={review._id}>
 										<strong>{review.name}</strong>
-										<Rating value={review.rating} />
+										<RatingR value={review.rating} />
 										<p>{review.createdAt.substring(0, 10)}</p>
 										<p>{review.comment}</p>
 									</ListGroup.Item>
@@ -238,7 +244,7 @@ function ProductPage({ match, history }) {
 									{loadingProductReview && <Loader />}
 									{userInfo ? (
 										<Form onSubmit={submitHandler}>
-											<Form.Group controlId="rating">
+											{/* <Form.Group controlId="rating">
 												<Form.Label>Rating</Form.Label>
 												<Form.Control
 													as="select"
@@ -252,7 +258,24 @@ function ProductPage({ match, history }) {
 													<option value="4">4 - Very Good</option>
 													<option value="5">5 - Excellent</option>
 												</Form.Control>
-											</Form.Group>
+											</Form.Group> */}
+											<Box
+												component="fieldset"
+												mb={3}
+												borderColor="transparent"
+											>
+												<Typography component="legend">Rating</Typography>
+												<Rating
+													name="half-rating"
+													precision={0.5}
+													size="large"
+													value={rating}
+													style={{ color: '#FF651D' }}
+													onChange={(event, newValue) => {
+														setRating(newValue);
+													}}
+												/>
+											</Box>
 											<Form.Group controlId="comment">
 												<Form.Label>Comment</Form.Label>
 												<Form.Control
