@@ -1,14 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
-import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
-import ProductPage from './pages/ProductPage';
 import CartPage from './pages/CartPage';
 import { Container } from 'react-bootstrap';
-import LoginUserPage from './pages/LoginUserPage';
-import RegisterPage from './pages/RegisterPage';
 import ProfilPage from './pages/ProfilePage';
 import UserListPage from './pages/UserListPage';
 import ShippingPage from './pages/ShippingPage';
@@ -19,54 +14,81 @@ import UserEditPage from './pages/UserEditPage';
 import ProductListPage from './pages/ProductListPage';
 import ProductEditPage from './pages/ProductEditPage';
 import OrderListPage from './pages/OrderListPage';
+import HeaderNew from './components/Header/HeaderNew';
+import Slides from './components/Slides';
+import LoginPage from './pages/LoginPages/LoginPage';
+import RegisterPageNew from './pages/LoginPages/RegisterPageNew';
+import ProductPageNew from './pages/ProductPageNew';
+import ProfilePageNew from './pages/ProfilPageNew/ProfilePageNew';
 
 function App() {
-	return (
-		<React.Fragment>
-			<Router>
-				<Header />
-				<main className="py-3">
-					<Container className="container">
-						<Route path="/" component={HomePage} exact />
-						<Route path="/search/:keyword" component={HomePage} exact />
-						<Route path="/page/:pageNumber" component={HomePage} exact />
-						<Route
-							path="/search/:keyword/page/:pageNumber"
-							component={HomePage}
-						/>
-						<Route path="/product/:id" component={ProductPage} />
-						<Route path="/cart/:id?" component={CartPage} />
-						<Route path="/login" component={LoginUserPage} />
-						<Route path="/register" component={RegisterPage} />
-						<Route path="/profile" component={ProfilPage} />
-						<Route path="/shipping" component={ShippingPage} />
-						<Route path="/payment" component={PaymentPage} />
-						<Route path="/placeorder" component={PlaceOrderPage} />
-						<Route path="/order/:id" component={OrderPage} />
-						<Route path="/admin/userlist" component={UserListPage} />
-						<Route path="/admin/user/:id/edit" component={UserEditPage} />
-						<Route
-							path="/admin/productlist"
-							exact
-							component={ProductListPage}
-						/>
-						<Route
-							path="/admin/productlist/:pageNumber"
-							exact
-							component={ProductListPage}
-						/>
-						<Route
-							path="/admin/product/:id/edit"
-							exact
-							component={ProductEditPage}
-						/>
-						<Route path="/admin/orderlist" component={OrderListPage} />
-					</Container>
-				</main>
-				<Footer />
-			</Router>
-		</React.Fragment>
-	);
+    return (
+        <React.Fragment>
+            <Router>
+                <HeaderNew />
+                <Route path="/" exact>
+                    <Slides style={{ zIndex: -1 }} />
+                </Route>
+                <main className="py-3">
+                    <Container className="container">
+                        <Route path="/" component={HomePage} exact />
+                        <Route
+                            path="/search/:keyword"
+                            component={HomePage}
+                            exact
+                        />
+                        <Route
+                            path="/page/:pageNumber"
+                            component={HomePage}
+                            exact
+                        />
+                        <Route
+                            path="/search/:keyword/page/:pageNumber"
+                            component={HomePage}
+                        />
+                        <Route path="/product/:id" component={ProductPageNew} />
+                        <Route path="/cart/:id?" component={CartPage} />
+                        <Route path="/login" component={LoginPage} />
+                        <Route path="/register" component={RegisterPageNew} />
+                        <Route path="/profile" component={ProfilePageNew} />
+                        <Route path="/profileEdit" component={ProfilPage} />
+                        <Route path="/shipping" component={ShippingPage} />
+                        <Route path="/payment" component={PaymentPage} />
+                        <Route path="/placeorder" component={PlaceOrderPage} />
+                        <Route path="/order/:id" component={OrderPage} />
+                        <Route
+                            path="/admin/userlist"
+                            component={UserListPage}
+                        />
+                        <Route
+                            path="/admin/user/:id/edit"
+                            component={UserEditPage}
+                        />
+                        <Route
+                            path="/admin/productlist"
+                            exact
+                            component={ProductListPage}
+                        />
+                        <Route
+                            path="/admin/productlist/:pageNumber"
+                            exact
+                            component={ProductListPage}
+                        />
+                        <Route
+                            path="/admin/product/:id/edit"
+                            exact
+                            component={ProductEditPage}
+                        />
+                        <Route
+                            path="/admin/orderlist"
+                            component={OrderListPage}
+                        />
+                    </Container>
+                </main>
+                <Footer />
+            </Router>
+        </React.Fragment>
+    );
 }
 
 export default App;
