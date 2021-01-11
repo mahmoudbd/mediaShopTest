@@ -1,110 +1,71 @@
 main {
-	min-height: 80vh;
+    min-height: 80vh;
+    background-color: white;
 }
 
 h3 {
-	padding: 1rem 0;
+    padding: 1rem 0;
 }
 h1 {
-	font-size: 1.8rem;
-	padding: 1rem 0;
+    font-size: 1.8rem;
+    padding: 1rem 0;
 }
 
 h2 {
-	font-size: 1.4rem;
-	padding: 1rem 0;
+    font-size: 1.4rem;
+    padding: 1rem 0;
 }
 .rating span {
-	margin: 0.1rem;
+    margin: 0.1rem;
 }
 i {
-	font-size: 20px;
+    font-size: 20px;
 }
 .uppercase {
-	text-transform: uppercase;
+    text-transform: uppercase;
 }
-.logo {
-	width: 35%;
-}
+/* .logo {
+    width: 10rem;
+} */
 
 /* carousel */
-.carousel-item-next,
+/* .carousel-item-next,
 .carousel-item-prev,
 .carousel-item.active {
-	display: flex;
+    display: flex;
 }
 .carousel {
-	background-color: #c8ccd8;
+    background-color: #c8ccd8;
 }
 .carousel-caption {
-	position: absolute;
-	top: 0;
+    position: absolute;
+    top: 0;
 }
 
 .carousel img {
-	height: 350px;
-	padding: 25px;
-	margin: 50px;
-	border-radius: 20%;
-	margin-left: 30%;
+    height: 350px;
+    padding: 25px;
+    margin: 50px;
+    border-radius: 20%;
+    margin-left: 30%;
 }
 .carousel a {
-	margin: 0 auto;
-}
-.badge {
-	padding-left: 9px;
-	padding-right: 9px;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-}
+    margin: 0 auto;
+} */
 
-.label-warning[href],
-.badge-warning[href] {
-	background-color: #c67605;
-}
-#lblCartCount {
-	font-size: 13px;
-	background: #ff651d;
-	color: #fff;
-	padding: 3 5px;
-	vertical-align: top;
-	margin-left: -8px;
+/* @media (max-width: 900px) {
+    .carousel-caption h2 {
+        font-size: 2.5vw;
+    }
+} */
 
-	border-radius: 50px;
-}
-.product-image {
-	width: 550px;
-}
+/* @media screen and (max-width: 670px) {
+    .logo {
+        width: 70%;
+        height: 50px;
+    } */
+/* .carousel img {
+        margin-left: 1%;
+    }
 
-.slick-prev {
-	left: 3% !important;
-	z-index: 1;
-}
-.slick-next {
-	right: 3% !important;
-
-	z-index: 1;
-}
-.slick-prev:before,
-.slick-next:before {
-	color: #000;
-}
-@media (max-width: 900px) {
-	.carousel-caption h2 {
-		font-size: 2.5vw;
-	}
-	.product-image {
-		width: 350px;
-	}
-}
-
-@media screen and (max-width: 670px) {
-	.logo {
-		width: 70%;
-		height: 50px;
-	}
-	.carousel img {
-		margin-left: 1%;
-	}
-}
+} */
