@@ -37,6 +37,7 @@ function HomePage({ match }) {
 		setSortedByBestRated(...products.sort((a, b) => b.rating - a.rating));
 		console.log(sortedByBestRated, 'best rated');
 	};
+
 	return (
 		<React.Fragment>
 			<Meta />
@@ -53,13 +54,13 @@ function HomePage({ match }) {
 			) : (
 				<React.Fragment>
 					<ButtonGroup size="lg" className="mb-2">
-						<Button onClick={bestRated} variant="outline-info">
+						<Button onClick={bestRated} variant="outline-danger">
 							Best Rated
 						</Button>
-						<Button onClick={priceLowToHigh} variant="outline-primary">
+						<Button onClick={priceLowToHigh} variant="outline-light">
 							Low To High
 						</Button>
-						<Button onClick={priceHighToLow} variant="outline-success">
+						<Button onClick={priceHighToLow} variant="outline-light">
 							High To Low
 						</Button>
 					</ButtonGroup>
