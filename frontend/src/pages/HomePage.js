@@ -8,7 +8,7 @@ import Loader from '../components/Loader';
 import Paginate from '../components/Paginate';
 import { useDispatch, useSelector } from 'react-redux';
 import { productsActions } from '../actions/productsActions';
-import ProductCarousel from '../components/ProductCarousel';
+// import ProductCarousel from '../components/ProductCarousel';
 
 function HomePage({ match }) {
 	const dispatch = useDispatch();
@@ -41,16 +41,16 @@ function HomePage({ match }) {
 	console.log(products, 'hjgj');
 	return (
 		<React.Fragment>
-			<h1 className="title">Welcome To MediaShop</h1>
+			{/* <h1 className="title">Welcome To MediaShop</h1> */}
 			<Meta />
-			{!keyword ? (
+			{/* {!keyword ? (
 				<ProductCarousel />
 			) : (
 				<Link to="/" className="btn btn-primary">
 					Go Back
 				</Link>
 			)}
-			<h2>Products</h2>
+			<h2>Products</h2> */}
 			{loading ? (
 				<Loader />
 			) : error ? (
@@ -64,14 +64,14 @@ function HomePage({ match }) {
 			) : (
 				<React.Fragment>
 					<ButtonGroup size="lg" className="mb-2">
-						<Button onClick={priceLowToHigh} variant="outline-primary">
-							Price:Low To High
-						</Button>
-						<Button onClick={priceHighToLow} variant="outline-success">
-							Price:High To Low
-						</Button>
 						<Button onClick={bestRated} variant="outline-info">
 							Best Rated
+						</Button>
+						<Button onClick={priceLowToHigh} variant="outline-primary">
+							Low To High
+						</Button>
+						<Button onClick={priceHighToLow} variant="outline-success">
+							High To Low
 						</Button>
 					</ButtonGroup>
 					<Row>
