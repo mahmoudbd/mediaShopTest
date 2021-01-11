@@ -37,7 +37,6 @@ function HomePage({ match }) {
 		setSortedByBestRated(...products.sort((a, b) => b.rating - a.rating));
 		console.log(sortedByBestRated, 'best rated');
 	};
-	console.log(products, 'hjgj');
 	return (
 		<React.Fragment>
 			<Meta />
