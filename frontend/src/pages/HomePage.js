@@ -8,7 +8,6 @@ import Loader from '../components/Loader';
 import Paginate from '../components/Paginate';
 import { useDispatch, useSelector } from 'react-redux';
 import { productsActions } from '../actions/productsActions';
-// import ProductCarousel from '../components/ProductCarousel';
 
 function HomePage({ match }) {
 	const dispatch = useDispatch();
@@ -41,16 +40,7 @@ function HomePage({ match }) {
 	console.log(products, 'hjgj');
 	return (
 		<React.Fragment>
-			{/* <h1 className="title">Welcome To MediaShop</h1> */}
 			<Meta />
-			{/* {!keyword ? (
-				<ProductCarousel />
-			) : (
-				<Link to="/" className="btn btn-primary">
-					Go Back
-				</Link>
-			)}
-			<h2>Products</h2> */}
 			{loading ? (
 				<Loader />
 			) : error ? (
