@@ -35,6 +35,7 @@ function HomePage({ match }) {
         console.log(sortedByBestRated, 'best rated');
     };
 
+
     return (
         <React.Fragment>
             <Meta />

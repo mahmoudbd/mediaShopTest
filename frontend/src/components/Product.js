@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Card } from 'react-bootstrap';
-import Rating from '../components/Rating';
+import RatingR from '../components/RatingR';
 
 function Product({ product }) {
 	return (
@@ -21,7 +21,7 @@ function Product({ product }) {
 						{product.rating === 0 ? (
 							<h4>NO Reviews</h4>
 						) : (
-							<Rating
+							<RatingR
 								value={product.rating}
 								text={`${product.numReviews} reviews`}
 							/>
