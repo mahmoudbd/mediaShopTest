@@ -5,6 +5,7 @@ import { Button, Table } from 'react-bootstrap';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { listUsers, deleteUser } from '../actions/userActions';
+import { Link } from 'react-router-dom';
 
 function UserListPage({ history }) {
 	const dispatch = useDispatch();
@@ -58,7 +59,7 @@ function UserListPage({ history }) {
 								<td>{user._id}</td>
 								<td>{user.name}</td>
 								<td>
-									<a href={`mailto:${user.email}`}>{user.email}</a>
+									<Link href={`mailto:${user.email}`}>{user.email}</Link>
 								</td>
 								<td>
 									{user.isAdmin ? (

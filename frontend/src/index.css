@@ -1,28 +1,41 @@
 main {
-    min-height: 80vh;
-    background-color: white;
+	min-height: 80vh;
+	background-color: white;
 }
 
 h3 {
-    padding: 1rem 0;
+	padding: 1rem 0;
 }
 h1 {
-    font-size: 1.8rem;
-    padding: 1rem 0;
+	font-size: 1.8rem;
+	padding: 1rem 0;
 }
 
 h2 {
-    font-size: 1.4rem;
-    padding: 1rem 0;
+	font-size: 1.4rem;
+	padding: 1rem 0;
 }
 .rating span {
-    margin: 0.1rem;
+	margin: 0.1rem;
 }
 i {
-    font-size: 20px;
+	font-size: 20px;
 }
 .uppercase {
-    text-transform: uppercase;
+	text-transform: uppercase;
+}
+slick-prev {
+	left: 3% !important;
+	z-index: 1;
+}
+.slick-next {
+	right: 3% !important;
+
+	z-index: 1;
+}
+.slick-prev:before,
+.slick-next:before {
+	color: #000;
 }
 /* .logo {
     width: 10rem;
