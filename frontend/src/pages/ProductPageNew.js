@@ -201,7 +201,7 @@ function ProductPageNew({ match, history }) {
 								<ListGroup.Item>
 									<Button
 										onClick={addToCart}
-										className="btn-block btn-light"
+										className="btn-block btn-primary"
 										type="button"
 										disabled={product.countInStock === 0}
 									>

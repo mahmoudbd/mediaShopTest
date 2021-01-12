@@ -14,7 +14,7 @@ export default function HeaderNew() {
 	const logoutHandler = () => {
 		dispatch(logout());
 	};
-	console.log(userInfo, 'userInfo');
+
 	return (
 		<nav
 			className="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark"
