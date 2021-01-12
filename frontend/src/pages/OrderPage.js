@@ -20,6 +20,7 @@ import Moment from 'moment';
 import SuccessModal from '../components/SuccessModal';
 
 function OrderPage({ match, history }) {
+    const [showModal, setShowModal] = useState(false);
     const orderId = match.params.id;
     const [sdkReady, setSdkReady] = useState(false);
     const dispatch = useDispatch();
@@ -89,6 +90,7 @@ function OrderPage({ match, history }) {
     const successPaymentHandler = (paymentResult) => {
         console.log('payment result', paymentResult);
         dispatch(payOrder(orderId, paymentResult));
+        setShowModal(true);
     };
 
     const deliverHandler = () => {
@@ -102,7 +104,7 @@ function OrderPage({ match, history }) {
                 <Message variant="danger">{error}</Message>
             ) : (
                 <React.Fragment>
-                    {order.isPaid && <SuccessModal />}
+                    {order.isPaid && showModal && <SuccessModal />}
                     <h1>Order Number "{order._id}"</h1>
                     <Row>
                         <Col md={8}>
