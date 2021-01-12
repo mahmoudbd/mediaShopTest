@@ -232,7 +232,7 @@ function ProductPageNew({ match, history }) {
 							<Col md={6}>
 								<Card.Title>Reviews</Card.Title>
 								{product.reviews.length === 0 && (
-									<Message variant="primary">No Reviews</Message>
+									<Message variant="light">No Reviews</Message>
 								)}
 								<ListGroup variant="flush">
 									{product.reviews.map((review) => (
@@ -297,8 +297,18 @@ function ProductPageNew({ match, history }) {
 											</Button>
 										</Form>
 									) : (
-										<Message variant="primary">
-											Please <Link to="/login">Sign in</Link> to write a review
+										<Message variant="light">
+											<strong>
+												Please {' '}
+												<Link
+													to="/login"
+													className="btn btn-outline-primary"
+													size="sm"
+												>
+													Sign in
+												</Link>{' '}
+												 to write a review
+											</strong>
 										</Message>
 									)}
 								</React.Fragment>

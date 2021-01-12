@@ -129,9 +129,11 @@ function OrderPage({ match, history }) {
 											</strong>
 										</Message>
 									) : (
-										<h4>
-											<i className="fas fa-shipping-fast" /> Delivery Service<i className="fas fa-shipping-fast" />
-										</h4>
+										<h6>
+											<i className="fas fa-shipping-fast" />
+											Your order will be delivered as soon as possible after
+											completing the payment<i className="fas fa-shipping-fast" />
+										</h6>
 										// <Message variant="light">Not Delivered</Message>
 									)}
 								</ListGroup.Item>
