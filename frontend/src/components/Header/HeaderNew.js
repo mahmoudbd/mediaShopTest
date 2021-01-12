@@ -5,6 +5,7 @@ import logo from '../../logoSimely.PNG';
 import { logout } from '../../actions/userActions';
 import './HeaderNew.css';
 import SearchBox from '../SearchBox';
+import { Link } from 'react-router-dom';
 export default function HeaderNew() {
 	const dispatch = useDispatch();
 	const userLogin = useSelector((state) => state.userLogin);
@@ -20,9 +21,9 @@ export default function HeaderNew() {
 			className="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark"
 			style={{ zIndex: '10', background: '' }}
 		>
-			<a className="navbar-brand" href="/">
+			<Link className="navbar-brand" to="/">
 				<img style={{ width: '10rem' }} src={logo} alt="logo" />
-			</a>
+			</Link>
 			<button
 				className="navbar-toggler"
 				type="button"
@@ -38,11 +39,11 @@ export default function HeaderNew() {
 			<div className="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul className="navbar-nav mr-auto">
 					<li className="nav-item active">
-						<a className="nav-link" href="/">
+						<Link className="nav-link" to="/">
 							<i className="fa fa-home" />
 							Home
 							<span className="sr-only">(current)</span>
-						</a>
+						</Link>
 					</li>
 				</ul>
 				<SearchBox />
@@ -50,7 +51,7 @@ export default function HeaderNew() {
 
 				<ul className="navbar-nav ">
 					<li className="nav-item">
-						<a className="nav-link" href="/cart">
+						<Link className="nav-link" to="/cart">
 							<i className="fa fa-shopping-cart">
 								{cartItems.length > 0 && (
 									<span className="badge badge-primary">
@@ -59,14 +60,14 @@ export default function HeaderNew() {
 								)}
 							</i>
 							Cart
-						</a>
+						</Link>
 					</li>
 
 					{userInfo ? (
 						<li className="nav-item dropdown">
-							<a
+							<Link
 								className="nav-link dropdown-toggle uppercase"
-								href="/"
+								to="/"
 								id="username"
 								role="button"
 								data-toggle="dropdown"
@@ -74,23 +75,23 @@ export default function HeaderNew() {
 								aria-expanded="false"
 							>
 								<p>{userInfo.name}</p>
-							</a>
+							</Link>
 							<div className="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a className="dropdown-item" href="/profile">
+								<Link className="dropdown-item" to="/profile">
 									Profile
-								</a>
+								</Link>
 								{userInfo &&
 								userInfo.isAdmin && (
 									<React.Fragment>
-										<a className="dropdown-item" href="/admin/userlist">
+										<Link className="dropdown-item" to="/admin/userlist">
 											Users
-										</a>
-										<a className="dropdown-item" href="/admin/productlist">
+										</Link>
+										<Link className="dropdown-item" to="/admin/productlist">
 											Products
-										</a>
-										<a className="dropdown-item" href="/admin/orderlist">
+										</Link>
+										<Link className="dropdown-item" to="/admin/orderlist">
 											Orders
-										</a>
+										</Link>
 									</React.Fragment>
 								)}
 								<button className="dropdown-item" onClick={logoutHandler}>

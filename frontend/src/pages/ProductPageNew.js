@@ -34,8 +34,8 @@ import {
 	WhatsappIcon
 } from 'react-share';
 
-// console.log = console.warn = console.error = () => {};
-// console.error('Something bad happened.');
+console.log = console.warn = console.error = () => {};
+console.error('Something bad happened.');
 
 function ProductPageNew({ match, history }) {
 	const [ qty, setQty ] = useState(1);
@@ -203,7 +203,7 @@ function ProductPageNew({ match, history }) {
 										onClick={addToCart}
 										className="btn-block btn-primary"
 										type="button"
-										disabled={product.countInStock === 0}
+										disabled={product.countInStock === 0 || qty === 0}
 									>
 										Add To Cart
 									</Button>
@@ -232,7 +232,7 @@ function ProductPageNew({ match, history }) {
 							<Col md={6}>
 								<Card.Title>Reviews</Card.Title>
 								{product.reviews.length === 0 && (
-									<Message variant="danger">No Reviews</Message>
+									<Message variant="primary">No Reviews</Message>
 								)}
 								<ListGroup variant="flush">
 									{product.reviews.map((review) => (
@@ -307,7 +307,7 @@ function ProductPageNew({ match, history }) {
 					</div>
 				</Card>
 			)}
-			<Link className="btn btn-light my-3 " to="/">
+			<Link className="btn btn-primary my-3 " to="/">
 				Go Back
 			</Link>
 		</React.Fragment>
