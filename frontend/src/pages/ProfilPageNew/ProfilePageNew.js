@@ -7,11 +7,11 @@ import Loader from '../../components/Loader';
 import Message from '../../components/Message';
 import { USER_UPADTE_PROFILE_RESET } from '../../constants/userConstants';
 import './ProfilePageNew.css';
+
 export default function ProfilePageNew({ history }) {
 	const [ name, setName ] = useState('');
 	const [ email, setEmail ] = useState('');
-	// const [ password ] = useState('');
-	// const [ confirmPassword ] = useState('');
+
 	const [ message ] = useState(null);
 
 	const dispatch = useDispatch();
@@ -23,8 +23,6 @@ export default function ProfilePageNew({ history }) {
 
 	const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
 	const { success } = userUpdateProfile;
-
-	// const ordersListUser = useSelector((state) => state.ordersListUser);
 
 	useEffect(
 		() => {
@@ -43,15 +41,6 @@ export default function ProfilePageNew({ history }) {
 		},
 		[ history, userInfo, dispatch, user, success ]
 	);
-
-	// const submitHandler = (e) => {
-	// 	e.preventDefault();
-	// 	if (password !== confirmPassword) {
-	// 		setMessage('Password do not match');
-	// 	} else {
-	// 		dispatch(updateUserProfile({ id: user._id, name, email, password }));
-	// 	}
-	// };
 
 	return (
 		<React.Fragment>
