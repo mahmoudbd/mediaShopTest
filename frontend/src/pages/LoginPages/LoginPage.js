@@ -44,7 +44,7 @@ export default function LoginPage({ location, history }) {
 	};
 	const handleSocialLoginFailure = (err) => {
 		console.error(err);
-		window.location.reload();
+		// window.location.reload();
 	};
 	return (
 		<div className="body">
