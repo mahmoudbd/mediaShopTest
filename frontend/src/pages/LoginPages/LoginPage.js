@@ -44,7 +44,7 @@ export default function LoginPage({ location, history }) {
 	};
 	const handleSocialLoginFailure = (err) => {
 		console.error(err);
-		// window.location.reload();
+		window.location.reload();
 	};
 	return (
 		<div className="body">
@@ -114,7 +114,7 @@ export default function LoginPage({ location, history }) {
 									<SocialButton
 										className="btn btn-lg btn-facebook btn-block text-uppercase"
 										provider="facebook"
-										appId="192433112580443"
+										appId="932701890595843"
 										onLoginSuccess={handleSocialLogin}
 										onLoginFailure={handleSocialLoginFailure}
 									>
