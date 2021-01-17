@@ -9,7 +9,7 @@ import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import SocialButton from '../../components/SocialButton';
 import './LoginPage.css';
-import GoogleLogin from 'react-google-login';
+import { GoogleLogin } from 'react-google-login';
 
 export default function LoginPage({ location, history }) {
 	const [ email, setEmail ] = useState('');
@@ -124,7 +124,7 @@ export default function LoginPage({ location, history }) {
 										<i className="fab fa-google mr-2" /> Sign in with Google
 									</SocialButton> */}
 									<GoogleLogin
-										clientId="404354796732-cv6nfvb4o0oi1e0nff6j8ea4m68fl8bq.apps.googleusercontent.com"
+										clientId="737660443535-pbinug4fi4mlnun5ifgh3ss88vk8tpa0.apps.googleusercontent.com"
 										render={(renderProps) => (
 											<button
 												className="btn btn-lg btn-google btn-block text-uppercase"
