@@ -149,7 +149,7 @@ export default function RegisterPageNew({ location, history }) {
 									</Link>
 									<hr className="my-4" />
 									<GoogleLogin
-										clientId="737660443535-pbinug4fi4mlnun5ifgh3ss88vk8tpa0.apps.googleusercontent.com"
+										clientId={`${process.env.REACT_APP_GOOGEL_API}`}
 										render={(renderProps) => (
 											<button
 												className="btn btn-lg btn-google btn-block text-uppercase"
@@ -159,24 +159,14 @@ export default function RegisterPageNew({ location, history }) {
 												LOGIN WITH GOOGLE
 											</button>
 										)}
-										//buttonText="Login using Google"
 										onSuccess={responseGoogle}
 										onFailure={responseGoogle}
 										cookiePolicy={'single_host_origin'}
 									/>
-									{/* <SocialButton
-										className="btn btn-lg btn-google btn-block text-uppercase"
-										provider="google"
-										appId="404354796732-cv6nfvb4o0oi1e0nff6j8ea4m68fl8bq.apps.googleusercontent.com"
-										onLoginSuccess={handleSocialLogin}
-										onLoginFailure={handleSocialLoginFailure}
-									>
-										<i className="fab fa-google mr-2" /> Sign up with Google
-									</SocialButton> */}
 									<SocialButton
 										className="btn btn-lg btn-facebook btn-block text-uppercase"
 										provider="facebook"
-										appId="932701890595843"
+										appId={`${process.env.REACT_APP_FACEBOOK_API}`}
 										onLoginSuccess={handleSocialLogin}
 										onLoginFailure={handleSocialLoginFailure}
 									>
