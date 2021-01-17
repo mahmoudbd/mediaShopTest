@@ -34,8 +34,8 @@ import {
 	WhatsappIcon
 } from 'react-share';
 
-// console.log = console.warn = console.error = () => {};
-// console.error('Something bad happened.');
+console.log = console.warn = console.error = () => {};
+console.error('Something bad happened.');
 
 function ProductPageNew({ match, history }) {
 	const [ qty, setQty ] = useState(1);
