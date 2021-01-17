@@ -9,6 +9,7 @@ import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import SocialButton from '../../components/SocialButton';
 import './LoginPage.css';
+import GoogleLogin from 'react-google-login';
 
 export default function LoginPage({ location, history }) {
 	const [ email, setEmail ] = useState('');
@@ -45,6 +46,16 @@ export default function LoginPage({ location, history }) {
 	const handleSocialLoginFailure = (err) => {
 		console.error(err);
 		// window.location.reload();
+	};
+	const responseGoogle = (user) => {
+		dispatch(
+			loginOrRegisterBySocialAccount(
+				user.profileObj.name,
+				user.profileObj.email,
+				user.profileObj.googleId,
+				user.profileObj.imageUrl
+			)
+		);
 	};
 	return (
 		<div className="body">
@@ -102,7 +113,8 @@ export default function LoginPage({ location, history }) {
 										<p className="d-block text-center mt-2 small">Register</p>
 									</Link>
 									<hr className="my-4" />
-									<SocialButton
+
+									{/* <SocialButton
 										className="btn btn-lg btn-google btn-block text-uppercase"
 										provider="google"
 										appId="404354796732-cv6nfvb4o0oi1e0nff6j8ea4m68fl8bq.apps.googleusercontent.com"
@@ -110,7 +122,23 @@ export default function LoginPage({ location, history }) {
 										onLoginFailure={handleSocialLoginFailure}
 									>
 										<i className="fab fa-google mr-2" /> Sign in with Google
-									</SocialButton>
+									</SocialButton> */}
+									<GoogleLogin
+										clientId="404354796732-cv6nfvb4o0oi1e0nff6j8ea4m68fl8bq.apps.googleusercontent.com"
+										render={(renderProps) => (
+											<button
+												className="btn btn-lg btn-google btn-block text-uppercase"
+												onClick={renderProps.onClick}
+												disabled={renderProps.disabled}
+											>
+												LOGIN WITH GOOGLE
+											</button>
+										)}
+										//buttonText="Login using Google"
+										onSuccess={responseGoogle}
+										onFailure={responseGoogle}
+										cookiePolicy={'single_host_origin'}
+									/>
 									<SocialButton
 										className="btn btn-lg btn-facebook btn-block text-uppercase"
 										provider="facebook"

@@ -10,6 +10,7 @@ import {
 
 import './RegisterPage.css';
 import SocialButton from '../../components/SocialButton';
+import GoogleLogin from 'react-google-login';
 export default function RegisterPageNew({ location, history }) {
 	const [ name, setName ] = useState('');
 	const [ email, setEmail ] = useState('');
@@ -40,7 +41,6 @@ export default function RegisterPageNew({ location, history }) {
 		}
 	};
 	const handleSocialLogin = (user) => {
-		console.log(user);
 		dispatch(
 			loginOrRegisterBySocialAccount(
 				user._profile.name,
@@ -53,6 +53,17 @@ export default function RegisterPageNew({ location, history }) {
 	const handleSocialLoginFailure = (err) => {
 		console.error(err);
 		// window.location.reload();
+	};
+	const responseGoogle = (user) => {
+		console.log(user, 'google user');
+		dispatch(
+			loginOrRegisterBySocialAccount(
+				user.profileObj.name,
+				user.profileObj.email,
+				user.profileObj.googleId,
+				user.profileObj.imageUrl
+			)
+		);
 	};
 	return (
 		<div className="body">
@@ -137,19 +148,35 @@ export default function RegisterPageNew({ location, history }) {
 										<p className="d-block text-center mt-2 small">Sign In</p>
 									</Link>
 									<hr className="my-4" />
-									<SocialButton
+									<GoogleLogin
+										clientId="404354796732-cv6nfvb4o0oi1e0nff6j8ea4m68fl8bq.apps.googleusercontent.com"
+										render={(renderProps) => (
+											<button
+												className="btn btn-lg btn-google btn-block text-uppercase"
+												onClick={renderProps.onClick}
+												disabled={renderProps.disabled}
+											>
+												LOGIN WITH GOOGLE
+											</button>
+										)}
+										//buttonText="Login using Google"
+										onSuccess={responseGoogle}
+										onFailure={responseGoogle}
+										cookiePolicy={'single_host_origin'}
+									/>
+									{/* <SocialButton
 										className="btn btn-lg btn-google btn-block text-uppercase"
 										provider="google"
-										appId="1075548840290-1fvvibai821p7ftl5ut4pcq771fvm8rg.apps.googleusercontent.com"
+										appId="404354796732-cv6nfvb4o0oi1e0nff6j8ea4m68fl8bq.apps.googleusercontent.com"
 										onLoginSuccess={handleSocialLogin}
 										onLoginFailure={handleSocialLoginFailure}
 									>
 										<i className="fab fa-google mr-2" /> Sign up with Google
-									</SocialButton>
+									</SocialButton> */}
 									<SocialButton
 										className="btn btn-lg btn-facebook btn-block text-uppercase"
 										provider="facebook"
-										appId="192433112580443"
+										appId="932701890595843"
 										onLoginSuccess={handleSocialLogin}
 										onLoginFailure={handleSocialLoginFailure}
 									>
