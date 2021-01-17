@@ -140,7 +140,7 @@ export default function RegisterPageNew({ location, history }) {
 									<SocialButton
 										className="btn btn-lg btn-google btn-block text-uppercase"
 										provider="google"
-										appId="404354796732-cv6nfvb4o0oi1e0nff6j8ea4m68fl8bq.apps.googleusercontent.com"
+										appId="1075548840290-1fvvibai821p7ftl5ut4pcq771fvm8rg.apps.googleusercontent.com"
 										onLoginSuccess={handleSocialLogin}
 										onLoginFailure={handleSocialLoginFailure}
 									>
