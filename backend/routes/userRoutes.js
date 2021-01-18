@@ -9,13 +9,15 @@ const {
 	deleteUser,
 	getUserById,
 	updateUser,
-	socialAccountHandler
+	socialLogin,
+	socialRegister
 } = require('../controllers/userController');
 const { protect, admin } = require('../middleware/authMiddleware');
 
 router.post('/', registerUser);
 router.post('/login', authUser);
-router.post('/loginOrRegisterBySocialAccount', socialAccountHandler);
+router.post('/socialLogin', socialLogin);
+router.post('/socialSignup', socialRegister);
 router.get('/profile', protect, getUserProfile);
 router.put('/profile', protect, updateUserProfile);
 router.get('/', protect, admin, getUsers);

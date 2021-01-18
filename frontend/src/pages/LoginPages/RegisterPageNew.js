@@ -3,10 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Message from '../../components/Message';
 import { Link } from 'react-router-dom';
 import Loader from '../../components/Loader';
-import {
-	register,
-	loginOrRegisterBySocialAccount
-} from '../../actions/userActions';
+import { register, signupBySocial } from '../../actions/userActions';
 
 import './RegisterPage.css';
 import SocialButton from '../../components/SocialButton';
@@ -42,7 +39,7 @@ export default function RegisterPageNew({ location, history }) {
 	};
 	const handleSocialLogin = (user) => {
 		dispatch(
-			loginOrRegisterBySocialAccount(
+			signupBySocial(
 				user._profile.name,
 				user._profile.email,
 				user._profile.id,
@@ -57,7 +54,7 @@ export default function RegisterPageNew({ location, history }) {
 	const responseGoogle = (user) => {
 		console.log(user, 'google user');
 		dispatch(
-			loginOrRegisterBySocialAccount(
+			signupBySocial(
 				user.profileObj.name,
 				user.profileObj.email,
 				user.profileObj.googleId,
@@ -65,6 +62,7 @@ export default function RegisterPageNew({ location, history }) {
 			)
 		);
 	};
+
 	return (
 		<div className="body">
 			<div className="container">
@@ -75,7 +73,11 @@ export default function RegisterPageNew({ location, history }) {
 							<div className="card-body">
 								<h5 className="card-title text-center">Register</h5>
 								{message && <Message variant="danger">{message}</Message>}
-								{error && <Message variant="danger">{error}</Message>}
+								{error && (
+									<Message variant="danger">
+										<h6>User already exists</h6>
+									</Message>
+								)}
 								{loading && <Loader />}
 								<form className="form-signin" onSubmit={submitHandler}>
 									<div className="form-label-group">
@@ -148,6 +150,7 @@ export default function RegisterPageNew({ location, history }) {
 										<p className="d-block text-center mt-2 small">Sign In</p>
 									</Link>
 									<hr className="my-4" />
+
 									<GoogleLogin
 										clientId={`${process.env.REACT_APP_GOOGEL_API}`}
 										render={(renderProps) => (
@@ -156,7 +159,7 @@ export default function RegisterPageNew({ location, history }) {
 												onClick={renderProps.onClick}
 												disabled={renderProps.disabled}
 											>
-												LOGIN WITH GOOGLE
+												REGISTER WITH GOOGLE
 											</button>
 										)}
 										onSuccess={responseGoogle}
@@ -170,8 +173,8 @@ export default function RegisterPageNew({ location, history }) {
 										onLoginSuccess={handleSocialLogin}
 										onLoginFailure={handleSocialLoginFailure}
 									>
-										<i className="fab fa-facebook-f mr-2" /> Sign up with
-										Facebook
+										<i className="fab fa-facebook-f mr-2" /> REGISTER WITH
+										FACEBOOK
 									</SocialButton>
 								</form>
 							</div>

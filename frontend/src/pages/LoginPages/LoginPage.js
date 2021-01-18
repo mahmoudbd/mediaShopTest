@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {
-	login,
-	loginOrRegisterBySocialAccount
-} from '../../actions/userActions';
+import { login, loginBySocial } from '../../actions/userActions';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import SocialButton from '../../components/SocialButton';
@@ -35,7 +32,7 @@ export default function LoginPage({ location, history }) {
 
 	const handleSocialLogin = (user) => {
 		dispatch(
-			loginOrRegisterBySocialAccount(
+			loginBySocial(
 				user._profile.name,
 				user._profile.email,
 				user._profile.id,
@@ -48,8 +45,9 @@ export default function LoginPage({ location, history }) {
 		// window.location.reload();
 	};
 	const responseGoogle = (user) => {
+		console.log(user, 'google');
 		dispatch(
-			loginOrRegisterBySocialAccount(
+			loginBySocial(
 				user.profileObj.name,
 				user.profileObj.email,
 				user.profileObj.googleId,

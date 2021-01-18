@@ -137,21 +137,14 @@ const updateUser = asyncHandler(async (req, res) => {
 		throw new Error('User Not Found');
 	}
 });
-const socialAccountHandler = asyncHandler(async (req, res) => {
+const socialRegister = asyncHandler(async (req, res) => {
 	const { name, email, socialId, profilePicURL } = req.body;
 	const password = socialId;
 	const userExists = await User.findOne({ email: email });
 
 	if (userExists) {
-		const user = await User.findOne({ email: email });
-		res.json({
-			_id: user._id,
-			name: user.name,
-			email: user.email,
-			isAdmin: user.isAdmin,
-			avatar: profilePicURL,
-			token: generateToken(user._id)
-		});
+		res.status(400);
+		throw new Error('User already exists');
 	} else {
 		const user = await User.create({
 			name,
@@ -164,6 +157,7 @@ const socialAccountHandler = asyncHandler(async (req, res) => {
 				name: user.name,
 				email: user.email,
 				isAdmin: user.isAdmin,
+				avatar: profilePicURL,
 				token: generateToken(user._id)
 			});
 		} else {
@@ -172,6 +166,24 @@ const socialAccountHandler = asyncHandler(async (req, res) => {
 		}
 	}
 });
+const socialLogin = asyncHandler(async (req, res) => {
+	const { email, profilePicURL } = req.body;
+	const user = await User.findOne({ email: email });
+	if (user) {
+		res.json({
+			_id: user._id,
+			name: user.name,
+			email: user.email,
+			isAdmin: user.isAdmin,
+			avatar: profilePicURL,
+			token: generateToken(user._id)
+		});
+	} else {
+		res.status(401);
+		throw new Error('Invalid email or password');
+	}
+});
+
 module.exports = {
 	authUser,
 	getUserProfile,
@@ -181,5 +193,6 @@ module.exports = {
 	deleteUser,
 	getUserById,
 	updateUser,
-	socialAccountHandler
+	socialRegister,
+	socialLogin
 };
